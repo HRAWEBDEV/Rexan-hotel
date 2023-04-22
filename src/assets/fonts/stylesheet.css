@@ -1,0 +1,180 @@
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum'),
+        url('IRANSansWebFaNum.woff2') format('woff2'),
+        url('IRANSansWebFaNum.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Black'), local('IRANSansWebFaNum-Black'),
+        url('IRANSansWebFaNum-Black.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Bold'), local('IRANSansWebFaNum-Bold'),
+        url('IRANSansWebFaNum-Bold.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Light'), local('IRANSansWebFaNum-Light'),
+        url('IRANSansWebFaNum-Light.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Medium'), local('IRANSansWebFaNum-Medium'),
+        url('IRANSansWebFaNum-Medium.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum UltraLight'), local('IRANSansWebFaNum-UltraLight'),
+        url('IRANSansWebFaNum-UltraLight.woff2') format('woff2'),
+        url('IRANSansWebFaNum-UltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum'),
+        url('IRANSansWebFaNum.woff2') format('woff2'),
+        url('IRANSansWebFaNum.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Bold'), local('IRANSansWebFaNum-Bold'),
+        url('IRANSansWebFaNum-Bold.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Black'), local('IRANSansWebFaNum-Black'),
+        url('IRANSansWebFaNum-Black.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Light'), local('IRANSansWebFaNum-Light'),
+        url('IRANSansWebFaNum-Light.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum UltraLight'), local('IRANSansWebFaNum-UltraLight'),
+        url('IRANSansWebFaNum-UltraLight.woff2') format('woff2'),
+        url('IRANSansWebFaNum-UltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Medium'), local('IRANSansWebFaNum-Medium'),
+        url('IRANSansWebFaNum-Medium.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum'),
+        url('IRANSansWebFaNum.woff2') format('woff2'),
+        url('IRANSansWebFaNum.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Bold'), local('IRANSansWebFaNum-Bold'),
+        url('IRANSansWebFaNum-Bold.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Light'), local('IRANSansWebFaNum-Light'),
+        url('IRANSansWebFaNum-Light.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Black'), local('IRANSansWebFaNum-Black'),
+        url('IRANSansWebFaNum-Black.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum Medium'), local('IRANSansWebFaNum-Medium'),
+        url('IRANSansWebFaNum-Medium.woff2') format('woff2'),
+        url('IRANSansWebFaNum-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IRANSansWebFaNum';
+    src: local('IRANSansWebFaNum UltraLight'), local('IRANSansWebFaNum-UltraLight'),
+        url('IRANSansWebFaNum-UltraLight.woff2') format('woff2'),
+        url('IRANSansWebFaNum-UltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+

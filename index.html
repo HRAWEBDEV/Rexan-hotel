@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fa">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- * google index -->
+  <meta name="robots" content="noindex" />
+  <!-- * styles -->
+  <link rel="stylesheet" href="/src/styles/global/reset.css" />
+  <link rel="stylesheet" href="/src/assets/icons/style.css" />
+  <link rel="stylesheet" href="/src/styles/components/component.css" />
+  <link rel="stylesheet" href="/src/styles/global/layout.css" />
+  <!-- * page style -->
+  <link rel="stylesheet" href="/src/styles/pages/index.css" />
+  <!-- * libraries -->
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <!-- * modules -->
+  <script src="/src/scripts/modules/tools-md.js" defer></script>
+  <script src="/src/scripts/modules/components-md.js" defer></script>
+  <script src="/src/scripts/modules/layout-md.js" defer></script>
+  <script src="/src/scripts/modules/wrapper-md.js" defer></script>
+  <!-- * home page -->
+  <script src="/src/scripts/pages/index.js" defer></script>
+  <title>Rexan hotel</title>
+ </head>
+ <body
+  data-page-loader
+  data-referesh-loader
+  data-page-loader-active="true"
+  data-referesh-loader-active="{{pageRefreshLoaderStatus}}"
+  dir="rtl"
+  ng-app="wrapperModule"
+  ng-controller="wrapperController"
+ >
+  <div
+   class="master__conatiner"
+   id="master__container"
+   ng-controller="homeController"
+  >
+   <master-header from='"home"'></master-header>
+   <div class="master__content">
+    <master-aside></master-aside>
+    <main class="master__main">
+     <section class="master__hero-section">
+      <comp-img-slider
+       images="[
+                    {
+                        href:'/src/assets/images/home-page/hotel-view.jpg',
+                        alt:'hero image',
+                        className:'master__hero-img'
+                    }]"
+      ></comp-img-slider>
+     </section>
+     <section class="quick-reserve__section">
+      <form class="quick-reserve__form">
+       <div class="quick-reserve__fields">
+        <div class="quick-reserve__field">
+         <comp-select
+          label="'نوع اتاق'"
+          model-value="FilterRoomTypesValue"
+          data="FilterRoomTypes"
+         ></comp-select>
+        </div>
+        <div class="quick-reserve__field">
+         <comp-select
+          label="'طبقه'"
+          model-value="FilterFloorsValue"
+          data="FilterFloors"
+         ></comp-select>
+        </div>
+       </div>
+       <comp-link
+        text="'بررسی وضعیت'"
+        on-click="quickSearchClicked"
+        class-name="'gold quick-reserve__link'"
+       ></comp-link>
+      </form>
+     </section>
+     <section id="introduction" class="intro__section">
+      <h1 class="intro__section__title">
+       <span class="header-wing start"></span>
+       با قرارداد مالکیت زمانی رکسان صاحب خانه، در کربلا شوید.
+       <span class="header-wing"></span>
+      </h1>
+      <article class="intro-section__gallery">
+       <a class="intro-section__card" href="">
+        <comp-image
+         href="'/src/assets/images/home-page/about-1.jpg'"
+        ></comp-image>
+       </a>
+       <a class="intro-section__card" href="">
+        <comp-image
+         href="'/src/assets/images/home-page/about-2.jpg'"
+        ></comp-image>
+       </a>
+       <a class="intro-section__card" href="">
+        <comp-image
+         href="'/src/assets/images/home-page/about-3.jpg'"
+        ></comp-image>
+       </a>
+       <a class="intro-section__card" href="">
+        <comp-image
+         href="'/src/assets/images/home-page/about-4.jpg'"
+        ></comp-image>
+       </a>
+       <a class="intro-section__card" href="">
+        <comp-image
+         href="'/src/assets/images/home-page/about-5.jpg'"
+        ></comp-image>
+       </a>
+      </article>
+     </section>
+     <section id="discovery" class="discovery__section">
+      <h2 class="discover__section-title">
+       کشف هتل رکسان
+       <span class="header-wing"></span>
+      </h2>
+      <article class="discover__section-content">
+       <div class="discover__section-info">
+        <p class="discover__section-des util-read-txt">
+         مجموعه اقامتی هتل 5 ستاره رکسان کربلا در فاصله 980 متری از بین الحرمین
+         و در خیابان باب البغداد در زمینی به مساحت 19،200 متر مربع و زیربنای
+         93،000 متر مربع در 14 طبقه در حال ساخت می باشد. طراحی و معماری چشم
+         انداز هتل مطابق با بالاترین استانداردهای بین المللی، بهترین امکانات
+         تفریحی، خدماتی و ورزشی را برای شما مهیا می کند، همچنین برخورداری از
+         اتاق های مجهز و متنوع می تواند شرایط و تسهیلات استثنایی برای متقاضیانی
+         که به دنبال فرصت های سرمایه گذاری و تامین مکان مناسب و دائمی در سفر به
+         عتبات هستند فراهم نماید. در محموعه هتل رکسان می توانید با بررسی و
+         انتخاب هر یک از دوره های از پیش تهیه شده، نسبت به عقد قرارداد مالکیت
+         زمانی به مدت 50 سال قمری از مدت تحویل صاحب واحد اقامتی شوید و از ملک
+         خود لذت ببرید.
+        </p>
+        <div class="discover__section-more">
+         <comp-link
+          type="'link'"
+          class-name="'gold'"
+          text="'کشف هتل'"
+          logo="true"
+          navigate-to="'/TS/Floors/index'"
+         ></comp-link>
+        </div>
+       </div>
+       <a class="discover__section-view" href="#">
+        <comp-image
+         alt="'discover hotel'"
+         class-name="'discover__section-img'"
+         href="'/src/assets/images/home-page/home-about.jpg'"
+        ></comp-image>
+       </a>
+      </article>
+     </section>
+     <section id="times" class="plans__section">
+      <h2 class="plans__section-title">
+       انواع دوره های زمانی هتل رکسان
+       <span class="header-wing"></span>
+      </h2>
+      <p class="plans__section-des util-read-txt">
+       شرایط واگذاری واحد ها در هتل رکسان و در قالب حق انتفاع در یک سال قمری به
+       50 هفته تقسیم شده است. هر دوره اقامتی به مدت یک هفته می باشد و با توجه به
+       مناسبت های بازه زمانی و اهمیت دوره دسته بندی شده است، در این قسمت می
+       توانید با بررسی انواع بازه های زمانی و بررسی شرایط قیمتی نسبت به انتخاب
+       واحد اقامتی در هر دوره تا 50 سال آینده از حق مالکیت زمانی آن بهرمند شوید
+       .
+      </p>
+      <article class="plans__section-view">
+       <div data-plan-slider class="plans__slider-conatiner">
+        <div class="plans__slider">
+         <ul data-plan-slider-list class="plans__list">
+          <li class="plans__item awesome" ng-repeat="plan in timeSharingPlans">
+           <h3 class="plans__item-name">{{plan.title}}</h3>
+           <i class="plans__item-indicator" ng-class="[plan.indicator]"></i>
+           <p>
+            <span>شروع قیمت: </span>
+            <span>{{plan.price}}</span>
+           </p>
+           <comp-link
+            class-name="'gold--outline'"
+            text="'اطلاعات بیشتر'"
+            logo="true"
+            navigate-to="'#'"
+           ></comp-link>
+          </li>
+         </ul>
+        </div>
+       </div>
+      </article>
+     </section>
+     <section id="rooms" class="room-types__section">
+      <header class="room-types__header">
+       <div class="room-types__wrapper">
+        <h2 class="room-types__title">
+         <span class="header-wing start"></span>
+         انواع اتاق های هتل
+         <span class="header-wing"></span>
+        </h2>
+       </div>
+       <ul class="room-types__list">
+        <li class="room-types__item" ng-repeat="room in roomTypes">
+         <comp-link
+          ng-class="{'is-selected':room.isSelected}"
+          type="'link'"
+          class-name="'gold room-types__link'"
+          text="room.title"
+          on-click="roomClicked"
+          click-overload="room"
+         >
+         </comp-link>
+        </li>
+       </ul>
+      </header>
+      <article class="room-types__view">
+       <section class="room-types__info">
+        <div class="room-types__info-wrapper">
+         <ul class="room-types__desc">
+          <li>
+           <span>حداقل ظرفیت: </span>
+           <span>2</span>
+          </li>
+          <li>
+           <span>حداکثر ظرفیت: </span>
+           <span>2</span>
+          </li>
+         </ul>
+         <div class="room-types__facilities">
+          <a
+           aria-label="go to room details"
+           class="room-types__facility"
+           href="#"
+          >
+           <div class="room-types__facility-wrapper">
+            <i class="opt-luxury-room"></i>
+           </div>
+           <span>اینترنت وایرلس</span>
+          </a>
+         </div>
+         <comp-link
+          class="room-types__more"
+          text="'اطلاعات بیشتر'"
+          logo="true"
+          navigate-to="'#'"
+         ></comp-link>
+        </div>
+       </section>
+       <section class="room-types__images">
+        <div class="room-types__image slider">
+         <comp-img-slider
+          images="[
+                {
+                    href:'/src/assets/images/home-page/room-1.jpg'
+                },{
+                    href:'/src/assets/images/home-page/room-2.jpg'
+                },
+                {
+                    href:'/src/assets/images/home-page/room-3.jpg'
+                }]"
+          active-timer="true"
+         ></comp-img-slider>
+        </div>
+        <a href="#" class="room-types__image">
+         <comp-image
+          href="'/src/assets/images/home-page/room-4.jpg'"
+         ></comp-image>
+        </a>
+        <a href="#" class="room-types__image">
+         <comp-image
+          href="'/src/assets/images/home-page/room-5.jpg'"
+         ></comp-image>
+        </a>
+       </section>
+      </article>
+     </section>
+     <section id="facilities" class="facilities__section">
+      <h2 class="facilities-section__title">
+       <span class="header-wing start"></span>
+       امکانات هتل رکسان
+       <span class="header-wing"></span>
+      </h2>
+      <article class="facilities__view">
+       <a href="" class="facilities__card">
+        <div class="facilities__card-icon-wrapper">
+         <i class="facilities__card-icon opt-city-guide"></i>
+        </div>
+        <span class="facilities__card-des">راهنمای تور شهر</span>
+       </a>
+       <a href="" class="facilities__card">
+        <div class="facilities__card-icon-wrapper">
+         <i class="facilities__card-icon opt-luxury-room"></i>
+        </div>
+        <span class="facilities__card-des">اتاق های لاکچری</span>
+       </a>
+       <a href="" class="facilities__card">
+        <div class="facilities__card-icon-wrapper">
+         <i class="facilities__card-icon opt-airport-pickup"></i>
+        </div>
+        <span class="facilities__card-des">ترانسفر فرودگاه</span>
+       </a>
+       <a href="" class="facilities__card">
+        <div class="facilities__card-icon-wrapper">
+         <i class="facilities__card-icon opt-pool"></i>
+        </div>
+        <span class="facilities__card-des">استخر</span>
+       </a>
+       <a href="" class="facilities__card">
+        <div class="facilities__card-icon-wrapper">
+         <i class="facilities__card-icon opt-wifi"></i>
+        </div>
+        <span class="facilities__card-des">اینترنت رایگان</span>
+       </a>
+       <a href="" class="facilities__card">
+        <div class="facilities__card-icon-wrapper">
+         <i class="facilities__card-icon opt-fastfood"></i>
+        </div>
+        <span class="facilities__card-des">رستوران</span>
+       </a>
+       <a href="" class="facilities__card">
+        <div class="facilities__card-icon-wrapper">
+         <i class="facilities__card-icon opt-cofee-shop"></i>
+        </div>
+        <span class="facilities__card-des">کافی شاپ</span>
+       </a>
+       <a href="" class="facilities__card more">
+        <div class="facilities__card-icon-wrapper">
+         <i class="facilities__card-icon opt-more"></i>
+        </div>
+        <span class="facilities__card-des"></span>
+       </a>
+      </article>
+     </section>
+     <section id="news" class="news__section">
+      <header class="news__header">
+       <div class="news-header__wrapper">
+        <h2 class="news__title">
+         اخبار پروژه رکسان
+         <span class="header-wing"></span>
+        </h2>
+       </div>
+       <comp-link
+        type="'link'"
+        class-name="'gold news__more'"
+        text="'دیگر خبرها'"
+        logo="true"
+       ></comp-link>
+      </header>
+      <article class="news__view">
+       <a href="" class="news__card">
+        <comp-image
+         href="'/src/assets/images/home-page/news-6.jpg'"
+        ></comp-image>
+        <div class="news__card-info">
+         <span class="news__card-time">8 مرداد 1401</span>
+         <br />
+         <span class="news__card-des"
+          >ارتقاء کیفیت هتل با تغییر هتل 4 ستاره به 5 ستاره</span
+         >
+        </div>
+       </a>
+       <a href="" class="news__card">
+        <comp-image
+         href="'/src/assets/images/home-page/news-1.jpg'"
+        ></comp-image>
+        <div class="news__card-info">
+         <span class="news__card-time">8 مرداد 1401</span>
+         <br />
+         <span class="news__card-des">
+          خرید زمین به متراژ 4275 متر مربع جهت محوطه سازی
+         </span>
+        </div>
+       </a>
+       <a href="" class="news__card">
+        <comp-image
+         href="'/src/assets/images/home-page/news-5.jpg'"
+        ></comp-image>
+        <div class="news__card-info">
+         <span class="news__card-time">8 مرداد 1401</span>
+         <br />
+         <span class="news__card-des">
+          خرید زمین به متراژ 2743 متر مربع جهت ساخت 12 استخر و سالن ورزشی
+         </span>
+        </div>
+       </a>
+       <a href="" class="news__card">
+        <comp-image
+         href="'/src/assets/images/home-page/news-6.jpg'"
+        ></comp-image>
+        <div class="news__card-info">
+         <span class="news__card-time">8 مرداد 1401</span>
+         <br />
+         <span class="news__card-des">
+          خرید زمین به متراژ 2078 متر مربع جهت ساخت پارکینگ طبفاتی با ظرفیت 400
+          اتومبیل
+         </span>
+        </div>
+       </a>
+       <a href="" class="news__card">
+        <comp-image
+         href="'/src/assets/images/home-page/news-5.jpg'"
+        ></comp-image>
+        <div class="news__card-info">
+         <span class="news__card-time">8 مرداد 1401</span>
+         <br />
+         <span class="news__card-des">
+          اضافه شدن 2 آسانسور جدید جهت خدمات رسانی بهینه در طبقات هتل
+         </span>
+        </div>
+       </a>
+       <a href="" class="news__card">
+        <comp-image
+         href="'/src/assets/images/home-page/news-6.jpg'"
+        ></comp-image>
+        <div class="news__card-info">
+         <span class="news__card-time">8 مرداد 1401</span>
+         <br />
+         <span class="news__card-des">
+          ساخت سالن بوئینگ و روف گاردن در طبقه 14 (پشت بام هتل)
+         </span>
+        </div>
+       </a>
+      </article>
+     </section>
+     <master-footer></master-footer>
+    </main>
+   </div>
+  </div>
+ </body>
+</html>
