@@ -1,10 +1,10 @@
 (function layoutModule() {
-    const layoutModule = angular.module('layoutModule', []);
-    (function quickNav() {
-        const quickNavDdo = () => {
-            const componentLink = (scope, jqContainer) => { };
-            const createView = () => {
-                return `
+ const layoutModule = angular.module('layoutModule', []);
+ (function quickNav() {
+  const quickNavDdo = () => {
+   const componentLink = (scope, jqContainer) => {};
+   const createView = () => {
+    return `
     <aside class="master__aside">
      <div class="master__aside-content">
       <nav class="master__quick-nav">
@@ -82,67 +82,97 @@
      </div>
     </aside>
     `;
-            };
-            return {
-                restrict: 'E',
-                link: componentLink,
-                template: createView(),
-            };
-        };
-        layoutModule.directive('masterAside', quickNavDdo);
-    })();
-    (function masterHeader() {
-        const componentLink = (scope, jqContainer) => {
-            const jqMasterNav = jqContainer.find("[data-master-nav]");
-            const jqMasterNavCt = jqContainer.find("[data-master-nav-ct]");
-            scope.masterNavCtClicked = function () {
-                jqMasterNavCt.toggleClass("is-selected");
-                jqMasterNav.fadeToggle(300);
-            }
-            scope.shopCardClicked = () => {
-                $("[data-master-card-container]").fadeToggle(200);
-            }
-            scope.masterNavigation = [{
-                title: "هتل رکسان",
-                links: ["درباره گروه رکسان",
-                    "درباره هتل", "کشف هتل",
-                    "شرایط تسهیلات تایم شیرینگ", "قوانین و شرایط عمومی هتل",
-                    "شرکای تجاری", "همکاری با ما"]
-            },
-            {
-                title: "واحدهای اقامتی",
-                links: ["استدیو دو تخته دبل",
-                    "استدیو دو تخته توئین", "سوئیت استاندارد",
-                    "سوئیت جونیور", "سوئیت لوکس", "سوئیت رویال", "سوئیت پرزیدنتال"]
-            }, {
-                title: "مجموعه های تفریحی",
-                links: ["استخر آقایان",
-                    "استخر بانوان", "حمام ترکی",
-                    "ماساژ", "سالن ورزشی", "اتاق کودک"]
-            }, {
-                title: "رستوران ها",
-                links: ["رستوران ایرانی",
-                    "رستوران سنتی", "رستوران بین المللی",
-                    "کلفی شاپ روف گاردن", "کافی شاپ لابی"]
-            },
-            {
-                title: "سالن های همایش",
-                links: ["سالن کنفرانس",
-                    "سالن آفی تئاتر", "اتاق جلسات",
-                    "سالن مجالس"]
-            }, {
-                links: ["تقویم آنلاین",
-                    "پیگیری قرارداد", "گالری تصاویر",
-                    "سوالات متداول", "اخبار هتل", "تماس با ما"]
-            }]
-            scope.supportedLanguages = [{
-                Key: 1,
-                Value: "فا"
-            }];
-            scope.defaultLanguageKey = 1;
-        };
-        const createView = () => {
-            return `
+   };
+   return {
+    restrict: 'E',
+    link: componentLink,
+    template: createView(),
+   };
+  };
+  layoutModule.directive('masterAside', quickNavDdo);
+ })();
+ (function masterHeader() {
+  const componentLink = (scope, jqContainer) => {
+   const jqMasterNav = jqContainer.find('[data-master-nav]');
+   const jqMasterNavCt = jqContainer.find('[data-master-nav-ct]');
+   scope.masterNavCtClicked = function () {
+    jqMasterNavCt.toggleClass('is-selected');
+    jqMasterNav.fadeToggle(300);
+   };
+   scope.shopCardClicked = () => {
+    $('[data-master-card-container]').fadeToggle(200);
+   };
+   scope.masterNavigation = [
+    {
+     title: 'هتل رکسان',
+     links: [
+      'درباره گروه رکسان',
+      'درباره هتل',
+      'کشف هتل',
+      'شرایط تسهیلات تایم شیرینگ',
+      'قوانین و شرایط عمومی هتل',
+      'شرکای تجاری',
+      'همکاری با ما',
+     ],
+    },
+    {
+     title: 'واحدهای اقامتی',
+     links: [
+      'استدیو دو تخته دبل',
+      'استدیو دو تخته توئین',
+      'سوئیت استاندارد',
+      'سوئیت جونیور',
+      'سوئیت لوکس',
+      'سوئیت رویال',
+      'سوئیت پرزیدنتال',
+     ],
+    },
+    {
+     title: 'مجموعه های تفریحی',
+     links: [
+      'استخر آقایان',
+      'استخر بانوان',
+      'حمام ترکی',
+      'ماساژ',
+      'سالن ورزشی',
+      'اتاق کودک',
+     ],
+    },
+    {
+     title: 'رستوران ها',
+     links: [
+      'رستوران ایرانی',
+      'رستوران سنتی',
+      'رستوران بین المللی',
+      'کلفی شاپ روف گاردن',
+      'کافی شاپ لابی',
+     ],
+    },
+    {
+     title: 'سالن های همایش',
+     links: ['سالن کنفرانس', 'سالن آفی تئاتر', 'اتاق جلسات', 'سالن مجالس'],
+    },
+    {
+     links: [
+      'تقویم آنلاین',
+      'پیگیری قرارداد',
+      'گالری تصاویر',
+      'سوالات متداول',
+      'اخبار هتل',
+      'تماس با ما',
+     ],
+    },
+   ];
+   scope.supportedLanguages = [
+    {
+     Key: 1,
+     Value: 'فا',
+    },
+   ];
+   scope.defaultLanguageKey = 1;
+  };
+  const createView = () => {
+   return `
    <header class="master__header" ng-class='{"home-page":from=="home"}'>
     <div class="master__header-dash start">
        <a 
@@ -338,24 +368,24 @@
     </div>
    </header>
    `;
-        };
-        const headerDdo = () => {
-            return {
-                restrict: 'E',
-                template: createView(),
-                link: componentLink,
-                scope: {
-                    from: "<?"
-                },
-            };
-        };
-        layoutModule.directive('masterHeader', headerDdo);
-    })();
-    (function masterFooter() {
-        const footerDdo = () => {
-            const componentLink = (scope, jqContainer) => { };
-            const createView = () => {
-                return `
+  };
+  const headerDdo = () => {
+   return {
+    restrict: 'E',
+    template: createView(),
+    link: componentLink,
+    scope: {
+     from: '<?',
+    },
+   };
+  };
+  layoutModule.directive('masterHeader', headerDdo);
+ })();
+ (function masterFooter() {
+  const footerDdo = () => {
+   const componentLink = (scope, jqContainer) => {};
+   const createView = () => {
+    return `
     <footer class="master__footer">
       <section class="master__footer-top">
       <div class="master__footer-top-links">
@@ -500,14 +530,46 @@
       </section>
      </footer>
     `;
-            };
-            return {
-                restrict: 'E',
-                template: createView(),
-                link: componentLink,
-                scope: {},
-            };
-        };
-        layoutModule.directive('masterFooter', footerDdo);
-    })();
+   };
+   return {
+    restrict: 'E',
+    template: createView(),
+    link: componentLink,
+    scope: {},
+   };
+  };
+  layoutModule.directive('masterFooter', footerDdo);
+ })();
+ (function masterBreadcrumb() {
+  const breadcrumbDdo = () => {
+   const componentLink = (scope, jqContainer) => {};
+   const createView = () => {
+    return ` 
+    <nav 
+        aria-label='breadcurmb navigation' 
+        class="master__breadcrumb-nav">
+        <ul class="master__breadcrumb-list">
+        <li class="master__breadcrumb-item"
+            ng-repeat="route in routes"
+            >
+                <a 
+                    href="{{route.href}}"
+                    class="master__breadcrumb-link">
+                    {{route.title}}
+                </a>
+            </li>
+        </ul>
+     </nav>`;
+   };
+   return {
+    restrict: 'E',
+    template: createView(),
+    link: componentLink,
+    scope: {
+     routes: '<?',
+    },
+   };
+  };
+  layoutModule.directive('masterBreadcrumb', breadcrumbDdo);
+ })();
 })();

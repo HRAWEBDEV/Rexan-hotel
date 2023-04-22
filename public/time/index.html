@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- * google index -->
+  <meta name="robots" content="noindex" />
+  <!-- * styles -->
+  <link rel="stylesheet" href="/src/styles/global/reset.css" />
+  <link rel="stylesheet" href="/src/assets/icons/style.css" />
+  <link rel="stylesheet" href="/src/styles/components/component.css" />
+  <link rel="stylesheet" href="/src/styles/global/layout.css" />
+  <!-- * page style -->
+  <link rel="stylesheet" href="/src/styles/pages/time.css" />
+  <!-- * libraries -->
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <!-- * modules -->
+  <script src="/src/scripts/modules/tools-md.js" defer></script>
+  <script src="/src/scripts/modules/components-md.js" defer></script>
+  <script src="/src/scripts/modules/layout-md.js" defer></script>
+  <script src="/src/scripts/modules/wrapper-md.js" defer></script>
+  <!-- * page script -->
+  <script src="/src/scripts/pages/time.js" defer></script>
+  <title>Rexan hotel plans</title>
+ </head>
+ <body
+  data-page-loader
+  data-referesh-loader
+  data-page-loader-active="true"
+  data-referesh-loader-active="{{pageRefreshLoaderStatus}}"
+  dir="rtl"
+  ng-app="wrapperModule"
+  ng-controller="wrapperController"
+ >
+  <div
+   class="master__conatiner"
+   id="master__container"
+   ng-controller="plansController"
+  >
+   <master-header></master-header>
+   <div class="master__content">
+    <main class="master__main">
+     <master-breadcrumb data-routes="routes"></master-breadcrumb>
+     <div class="ms-page-intro">
+      <h1 class="ms-page-intro__title">انواع دوره های زمانی هتل رکسان</h1>
+     </div>
+     <section id="plans__section" class="plans__section">
+      <article class="plans__view">
+       <div class="plan__card-wrapper" ng-repeat="time in times">
+        <div class="plan__card">
+         <div class="plan__card-header">
+          <h3>{{time.title}}</h3>
+         </div>
+         <div class="plan__card-content">
+          <div class="plan__card-date">
+           <div class="plan__card-date-from">
+            <div class="plan__card-date-day">
+             <span>{{time.startDate}}</span>
+             <i class="opt-callender-day-frame"></i>
+            </div>
+            <div class="plan__card-date-month">
+             <i class="opt-lunar-month-2"></i>
+            </div>
+           </div>
+           <span class="plan__card-date-del"> الی </span>
+           <div class="plan__card-date-to">
+            <div class="plan__card-date-day">
+             <span>{{time.endDate}}</span>
+             <i class="opt-callender-day-frame"></i>
+            </div>
+            <div class="plan__card-date-month">
+             <i class="opt-lunar-month-2"></i>
+            </div>
+           </div>
+          </div>
+          <div class="plan__card-desc">
+           <p>
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+           </p>
+          </div>
+          <div class="plan__card-more">
+           <comp-link
+            class-name="'gold'"
+            text="'لیست اتاق ها'"
+            logo="true"
+            on-click="timeShowRoomsClicked"
+            click-overload="TmpTime"
+           ></comp-link>
+          </div>
+         </div>
+        </div>
+       </div>
+      </article>
+     </section>
+     <master-footer></master-footer>
+    </main>
+   </div>
+  </div>
+ </body>
+</html>
