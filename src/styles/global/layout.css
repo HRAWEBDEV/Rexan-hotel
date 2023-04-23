@@ -350,16 +350,16 @@ body {
 
 [data-page-loader][data-page-loader-active='true']::after,
 [data-referesh-loader][data-referesh-loader-active='true']::after {
- content: url('/src/assets/svg/Rexan_Hotel_Logo_no_title.svg');
+ content: url('/src/assets/svg/Rexan_Hotel_Logo_no_title_animated.svg');
  left: 50%;
  top: 50%;
  transform: translate(-50%, -50%);
  width: 16em;
+ padding-block: var(--gap);
 }
 
 [data-referesh-loader][data-referesh-loader-active='true']::after {
  background-color: var(--cl-light-fn);
- padding: var(--gap) var(--gap-2x);
  border-radius: var(--br-ra-main);
 }
 
@@ -596,4 +596,103 @@ body {
  --comp-btn-inline-padding: 0;
  font-weight: var(--fn-w-medium);
 }
-/* each route introduction section */
+/* filter side bar */
+.comp-filters__container {
+ --filter-width: 22em;
+ width: var(--filter-width);
+ font-weight: var(--fn-w-normal);
+ background-color: rgb(var(--cl-white-50));
+ border-inline-end: 1px solid rgb(var(--cl-white-200));
+ margin-inline-end: var(--gap);
+}
+
+.comp-filters__stick {
+ padding: var(--gap);
+ position: sticky;
+ top: 0;
+}
+
+.comp-filter__view {
+ display: flex;
+ gap: var(--gap);
+ justify-content: flex-end;
+ padding-bottom: var(--gap);
+}
+
+.comp-filter__view-btn {
+ font-size: 1.5em;
+ color: rgb(var(--cl-cyan-600));
+ transition: var(--tr-all-normall);
+ line-height: 0;
+}
+
+.comp-filter__view-btn:is(:hover, :focus, .is-selected) {
+ color: var(--cl-red-accent);
+}
+
+.comp-filter__view,
+.comp-filter__type {
+ --br-color: var(--cl-white-200);
+ position: relative;
+}
+
+.comp-filter__type {
+ padding-block: var(--gap);
+}
+
+.comp-filter__type:is(:hover, :focus) {
+ --br-color: var(--cl-red-700);
+}
+
+.rooms-filter__top {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: var(--gap-small);
+ min-height: 3em;
+ cursor: pointer;
+}
+
+.comp-filter__view::after,
+.comp-filter__type::after {
+ content: '';
+ position: absolute;
+ width: 100%;
+ bottom: 0;
+ left: 0;
+ height: 1px;
+ transition: var(--tr-all-normall);
+ background-image: linear-gradient(
+  to right,
+  rgba(var(--br-color), 0.3),
+  rgba(var(--br-color), 1),
+  rgba(var(--br-color), 0.3)
+ );
+}
+
+.comp-filter-indicator {
+ display: inline-block;
+ border-radius: 100%;
+ height: 0.5em;
+ width: 0.5em;
+ background-color: var(--cl-red-accent);
+}
+
+.comp-filter__list {
+ display: none;
+ margin-top: var(--gap);
+ max-height: 15em;
+ overflow: auto;
+ padding-inline-start: var(--gap);
+}
+@media (max-width: 65em) {
+ .comp-filters__container {
+  position: absolute;
+  z-index: var(--zi-filters);
+  inset: 0 calc(-1 * var(--filter-width) - 1em) 0 auto;
+  transition: var(--tr-all-normall);
+ }
+ .comp-filters__container.is-visible {
+  inset-inline-start: 0;
+ }
+}

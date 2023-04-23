@@ -97,43 +97,47 @@
    </div>
    <div class="master__content">
     <main data-master-main class="master__main rooms-main">
+     <master-breadcrumb data-routes="routes"></master-breadcrumb>
      <div class="ms-page-intro">
       <h1 class="ms-page-intro__title">کشف هتل رکسان - لیست اتاق ها</h1>
      </div>
      <div class="rooms-content">
-      <aside class="rooms-filters__container">
-       <div class="rooms-filters__stick">
-        <div class="rooms-filter__view">
+      <aside
+       data-comp-filter-container
+       class="comp-filters__container rooms-filters__container"
+      >
+       <div class="comp-filters__stick">
+        <div class="comp-filter__view">
          <button
           type="button"
           aria-label="change filters view"
-          class="rooms-filter__view-btn"
+          class="comp-filter__view-btn"
          >
           <i class="opt-grid-view"></i>
          </button>
          <button
           type="button"
           aria-label="change filters view"
-          class="rooms-filter__view-btn is-selected"
+          class="comp-filter__view-btn is-selected"
          >
           <i class="opt-list-view"></i>
          </button>
         </div>
-        <form data-room-filter-form class="rooms-filter__form">
-         <div class="rooms-filter__type">
-          <div data-room-filter-btn class="rooms-filter__top" tabindex="0">
+        <form data-comp-filter-form class="rooms-filter__form">
+         <div class="comp-filter__type">
+          <div data-comp-filter-btn class="rooms-filter__top" tabindex="0">
            <div class="rooms-filter__info">
             <p class="rooms-filter__title">
              نوع دوره
-             <i class="filter-indicator"></i>
+             <i class="comp-filter-indicator"></i>
             </p>
             <p class="util-txt-medium"></p>
            </div>
            <i class="opt-arrow-down util-fn-1-5"></i>
           </div>
           <div
-           data-room-filter-list
-           class="rooms-filter__list util-d-grid util-gap"
+           data-comp-filter-list
+           class="comp-filter__list util-d-grid util-gap"
           >
            <div class="util-d-grid util-small-gap">
             <comp-checkbox
@@ -149,20 +153,20 @@
            </div>
           </div>
          </div>
-         <div class="rooms-filter__type">
-          <div data-room-filter-btn class="rooms-filter__top" tabindex="0">
+         <div class="comp-filter__type">
+          <div data-comp-filter-btn class="rooms-filter__top" tabindex="0">
            <div class="rooms-filter__info">
             <p class="rooms-filter__title">
              دوره
-             <i class="filter-indicator"></i>
+             <i class="comp-filter-indicator"></i>
             </p>
             <p class="util-txt-medium"></p>
            </div>
            <i class="opt-arrow-down util-fn-1-5"></i>
           </div>
           <div
-           data-room-filter-list
-           class="rooms-filter__list util-d-grid util-gap"
+           data-comp-filter-list
+           class="comp-filter__list util-d-grid util-gap"
           >
            <div class="util-d-grid util-small-gap">
             <comp-checkbox
@@ -178,20 +182,20 @@
            </div>
           </div>
          </div>
-         <div class="rooms-filter__type">
-          <div data-room-filter-btn class="rooms-filter__top" tabindex="0">
+         <div class="comp-filter__type">
+          <div data-comp-filter-btn class="rooms-filter__top" tabindex="0">
            <div class="rooms-filter__info">
             <p class="rooms-filter__title">
              نوع اتاق
-             <i class="filter-indicator"></i>
+             <i class="comp-filter-indicator"></i>
             </p>
             <p class="util-txt-medium"></p>
            </div>
            <i class="opt-arrow-down util-fn-1-5"></i>
           </div>
           <div
-           data-room-filter-list
-           class="rooms-filter__list util-d-grid util-gap"
+           data-comp-filter-list
+           class="comp-filter__list util-d-grid util-gap"
           >
            <div class="util-d-grid util-small-gap">
             <comp-checkbox
@@ -207,20 +211,20 @@
            </div>
           </div>
          </div>
-         <div class="rooms-filter__type">
-          <div data-room-filter-btn class="rooms-filter__top" tabindex="0">
+         <div class="comp-filter__type">
+          <div data-comp-filter-btn class="rooms-filter__top" tabindex="0">
            <div class="rooms-filter__info">
             <p class="rooms-filter__title">
              طبقه
-             <i class="filter-indicator"></i>
+             <i class="comp-filter-indicator"></i>
             </p>
             <p class="util-txt-medium"></p>
            </div>
            <i class="opt-arrow-down util-fn-1-5"></i>
           </div>
           <div
-           data-room-filter-list
-           class="rooms-filter__list util-d-grid util-gap"
+           data-comp-filter-list
+           class="comp-filter__list util-d-grid util-gap"
           >
            <div class="util-d-grid util-small-gap">
             <comp-checkbox

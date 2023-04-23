@@ -85,30 +85,13 @@
        <span class="header-wing"></span>
       </h1>
       <article class="intro-section__gallery">
-       <a class="intro-section__card" href="">
-        <comp-image
-         href="'/src/assets/images/home-page/about-1.jpg'"
-        ></comp-image>
-       </a>
-       <a class="intro-section__card" href="">
-        <comp-image
-         href="'/src/assets/images/home-page/about-2.jpg'"
-        ></comp-image>
-       </a>
-       <a class="intro-section__card" href="">
-        <comp-image
-         href="'/src/assets/images/home-page/about-3.jpg'"
-        ></comp-image>
-       </a>
-       <a class="intro-section__card" href="">
-        <comp-image
-         href="'/src/assets/images/home-page/about-4.jpg'"
-        ></comp-image>
-       </a>
-       <a class="intro-section__card" href="">
-        <comp-image
-         href="'/src/assets/images/home-page/about-5.jpg'"
-        ></comp-image>
+       <a
+        class="intro-section__card"
+        ng-repeat="img in introductionImages"
+        ng-click="introImageClicked(img)"
+        href="#"
+       >
+        <comp-image href="img.href"></comp-image>
        </a>
       </article>
      </section>
@@ -422,7 +405,11 @@
      <master-footer></master-footer>
     </main>
    </div>
-   <!-- <comp-img-slide-show></comp-img-slide-show> -->
+   <comp-img-slide-show
+    is-open="openSlideShow"
+    data-images="introductionImages"
+    tr-duration="'0.8s'"
+   ></comp-img-slide-show>
   </div>
  </body>
 </html>

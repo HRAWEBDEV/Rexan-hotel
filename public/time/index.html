@@ -46,57 +46,124 @@
      <div class="ms-page-intro">
       <h1 class="ms-page-intro__title">انواع دوره های زمانی هتل رکسان</h1>
      </div>
-     <section id="plans__section" class="plans__section">
-      <article class="plans__view">
-       <div class="plan__card-wrapper" ng-repeat="time in times">
-        <div class="plan__card">
-         <div class="plan__card-header">
-          <h3>{{time.title}}</h3>
+     <div class="plans__content">
+      <aside
+       data-comp-filter-container
+       class="comp-filters__container plans-filters__container"
+      >
+       <div class="comp-filters__stick">
+        <form data-comp-filter-form class="rooms-filter__form">
+         <div class="comp-filter__type">
+          <div data-comp-filter-btn class="rooms-filter__top" tabindex="0">
+           <div class="rooms-filter__info">
+            <p class="rooms-filter__title">
+             دوره
+             <i class="comp-filter-indicator"></i>
+            </p>
+            <p class="util-txt-medium"></p>
+           </div>
+           <i class="opt-arrow-down util-fn-1-5"></i>
+          </div>
+          <div
+           data-comp-filter-list
+           class="comp-filter__list util-d-grid util-gap"
+          >
+           <div class="util-d-grid util-small-gap">
+            <comp-checkbox
+             label=""
+             data-id=""
+             model-value=""
+             on-click=""
+             on-change=""
+             overload=""
+            >
+            </comp-checkbox>
+           </div>
+          </div>
          </div>
-         <div class="plan__card-content">
-          <div class="plan__card-date">
-           <div class="plan__card-date-from">
-            <div class="plan__card-date-day">
-             <span>{{time.startDate}}</span>
-             <i class="opt-callender-day-frame"></i>
-            </div>
-            <div class="plan__card-date-month">
-             <i class="opt-lunar-month-2"></i>
-            </div>
+         <div class="comp-filter__type">
+          <div data-comp-filter-btn class="rooms-filter__top" tabindex="0">
+           <div class="rooms-filter__info">
+            <p class="rooms-filter__title">
+             ماه
+             <i class="comp-filter-indicator"></i>
+            </p>
+            <p class="util-txt-medium"></p>
            </div>
-           <span class="plan__card-date-del"> الی </span>
-           <div class="plan__card-date-to">
-            <div class="plan__card-date-day">
-             <span>{{time.endDate}}</span>
-             <i class="opt-callender-day-frame"></i>
-            </div>
-            <div class="plan__card-date-month">
-             <i class="opt-lunar-month-2"></i>
-            </div>
+           <i class="opt-arrow-down util-fn-1-5"></i>
+          </div>
+          <div
+           data-comp-filter-list
+           class="comp-filter__list util-d-grid util-gap"
+          >
+           <div class="util-d-grid util-small-gap">
+            <comp-checkbox
+             label=""
+             data-id=""
+             model-value=""
+             on-change=""
+             overload=""
+             on-click=""
+            >
+            </comp-checkbox>
            </div>
           </div>
-          <div class="plan__card-desc">
-           <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-           </p>
+         </div>
+        </form>
+       </div>
+      </aside>
+      <section id="plans__section" class="plans__section">
+       <article class="plans__view">
+        <div class="plan__card-wrapper" ng-repeat="time in times">
+         <div class="plan__card">
+          <div class="plan__card-header">
+           <h3>{{time.title}}</h3>
           </div>
-          <div class="plan__card-more">
-           <comp-link
-            class-name="'gold'"
-            text="'لیست اتاق ها'"
-            logo="true"
-            navigate-to="'/public/rooms'"
-            on-click="timeShowRoomsClicked"
-            click-overload="TmpTime"
-           ></comp-link>
+          <div class="plan__card-content">
+           <div class="plan__card-date">
+            <div class="plan__card-date-from">
+             <div class="plan__card-date-day">
+              <span>{{time.startDate}}</span>
+              <i class="opt-callender-day-frame"></i>
+             </div>
+             <div class="plan__card-date-month">
+              <i class="opt-lunar-month-2"></i>
+             </div>
+            </div>
+            <span class="plan__card-date-del"> الی </span>
+            <div class="plan__card-date-to">
+             <div class="plan__card-date-day">
+              <span>{{time.endDate}}</span>
+              <i class="opt-callender-day-frame"></i>
+             </div>
+             <div class="plan__card-date-month">
+              <i class="opt-lunar-month-2"></i>
+             </div>
+            </div>
+           </div>
+           <div class="plan__card-desc">
+            <p>
+             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+             استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+             ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+            </p>
+           </div>
+           <div class="plan__card-more">
+            <comp-link
+             class-name="'gold'"
+             text="'لیست اتاق ها'"
+             logo="true"
+             navigate-to="'/public/rooms'"
+             on-click="timeShowRoomsClicked"
+             click-overload="TmpTime"
+            ></comp-link>
+           </div>
           </div>
          </div>
         </div>
-       </div>
-      </article>
-     </section>
+       </article>
+      </section>
+     </div>
      <master-footer></master-footer>
     </main>
    </div>

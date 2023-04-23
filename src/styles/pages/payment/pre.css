@@ -6,6 +6,9 @@
  grid-template-columns: 1fr var(--content-aside-width);
  gap: var(--gap-2x);
 }
+.prep__content > *:first-child {
+ overflow: hidden;
+}
 /* form */
 .comp-form {
  border: 1px solid rgb(var(--cl-white-200));

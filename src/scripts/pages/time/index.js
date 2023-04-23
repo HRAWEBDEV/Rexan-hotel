@@ -1,3 +1,7 @@
+$(() => {
+ const { registerFilterSideBar } = toolsModule;
+ registerFilterSideBar();
+});
 (function plansRoute() {
  const plansController = (scope) => {
   scope.routes = [

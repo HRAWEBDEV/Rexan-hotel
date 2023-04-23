@@ -522,8 +522,12 @@ comp-img-slider,
 
 .comp-image__slide {
  flex-shrink: 0;
+ opacity: 1;
+ transition: opacity 0.2s ease;
 }
-
+.comp-image__slide.fade-out {
+ opacity: 0;
+}
 .comp-image__slider-ct {
  --ct-btn-size: 3.3em;
  position: absolute;
@@ -573,6 +577,7 @@ comp-img-slider,
  height: var(--indicator-size);
  background: var(--cl-light-fn);
  transition: var(--tr-all-normall);
+ border: 1px solid var(--cl-red-accent);
 }
 
 .comp-image__slider-indicator:is(.is-selected) {
@@ -672,4 +677,8 @@ comp-img-slider,
 }
 .comp-slide-show__close i {
  font-size: 2.5em;
+}
+.comp-slide-show__slider {
+ width: calc(100% - 2 * var(--gap-4x));
+ margin-inline: auto;
 }

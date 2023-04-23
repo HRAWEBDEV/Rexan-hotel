@@ -1,6 +1,13 @@
+.plans__content {
+ position: relative;
+ display: flex;
+}
+
 .plans__section {
- padding-inline: var(--section-inline-offset);
- padding-block: var(--section-block-offset);
+ flex: 1;
+ padding: var(--gap-2x);
+ padding-inline-start: var(--gap);
+ padding-inline-end: var(--section-inline-offset);
 }
 
 .plans__type-title {
@@ -84,7 +91,7 @@
 .plans__view {
  display: grid;
  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17em), 1fr));
- gap: var(--gap);
+ gap: var(--gap-2x);
 }
 
 .plan__card-wrapper {
@@ -95,7 +102,6 @@
  --badge-cl: var(--cl-gold-accent);
  --wing-cl: var(--cl-gold-accent);
  position: relative;
- padding: calc(var(--wing-size) - 0.1em);
  border-radius: var(--br-ra-main);
  overflow: hidden;
 }

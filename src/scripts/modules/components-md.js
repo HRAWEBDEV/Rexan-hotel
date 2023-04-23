@@ -72,7 +72,7 @@
      <picture class='comp-image__picture'>
       <img loading="lazy" data-comp-image class='comp-image' 
       ng-src='{{imageSrc}}' ng-class='[className]' 
-      alt='{{alt}}' draggable="false"/>
+      alt='{{alt}}' draggable="false" ng-style="{'object-fit':objectFit || 'cover'}"/>
      </picture>
      <div data-comp-image-wrapper class='comp-image__loading-wrapper'>
       <svg class="comp-image__loading" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
@@ -92,6 +92,7 @@
      href: '<?',
      alt: '<?',
      className: '<?',
+     objectFit: '<?',
     },
    };
   };
@@ -452,18 +453,48 @@
     const jqSlideContainer = $(jqContainer).find(
      '[data-comp-slider-container]'
     );
+    const jqSlideRail = $(jqContainer).find('[data-comp-slider-rail]');
+    const deactiveRailTransition = () => {
+     jqSlideRail.css('transition', 'all 0s ease');
+    };
+    const activeRailTransition = () => {
+     jqSlideRail.css('transition', '');
+    };
     const changeSliderState = (newState) => {
      jqSlideContainer.css('--slider-state', newState);
     };
-    const changeSlide = (action) => {
+    const delay = () => {
+     return new Promise((resolve) => {
+      setTimeout(() => {
+       resolve();
+      }, 10);
+     });
+    };
+    const changeSlide = async (action) => {
      if (action == 'next') {
-      scope.sliderState =
-       scope.slidesCount - 1 > scope.sliderState ? scope.sliderState + 1 : 0;
+      if (scope.slidesCount - 1 > scope.sliderState)
+       scope.sliderState = scope.sliderState + 1;
+      else {
+       deactiveRailTransition();
+       scope.sliderState = -1;
+       changeSliderState(scope.sliderState);
+       await delay();
+       activeRailTransition();
+       scope.sliderState = 0;
+      }
      } else if (action == 'prev') {
-      scope.sliderState =
-       scope.sliderState > 0 ? scope.sliderState - 1 : scope.slidesCount - 1;
+      if (scope.sliderState > 0) scope.sliderState = scope.sliderState - 1;
+      else {
+       deactiveRailTransition();
+       scope.sliderState = scope.slidesCount;
+       changeSliderState(scope.sliderState);
+       await delay();
+       activeRailTransition();
+       scope.sliderState = scope.slidesCount - 1;
+      }
      }
      changeSliderState(scope.sliderState);
+     scope.$apply();
     };
     const deactiveTimer = () => {
      clearInterval(scope.sliderTimerId);
@@ -488,6 +519,11 @@
     scope.$watch('images', (oldValue, newValue) => {
      if (!Array.isArray(newValue)) return;
      scope.slidesCount = newValue.length;
+     const slideStartIndex = newValue.findIndex((item) => item.startFrom);
+     if (slideStartIndex >= 0) {
+      scope.sliderState = slideStartIndex;
+      changeSliderState(scope.sliderState);
+     }
     });
     scope.$watch('activeTimer', (oldValue, newValue) => {
      if (newValue) {
@@ -509,16 +545,22 @@
                         <div
                             class='comp-image__slider-wrapper'
                         >
-                            <div class='comp-image__slider-rail'>
+                            <div class='comp-image__slider-rail'
+                              data-comp-slider-rail       
+                              ng-style="{'--tr-all-normall':trDuration || ''}"                  
+                            >
                                 <a  
                                     role='slider slide'
                                     ng-repeat='img in images'
-                                    class='comp-image__slide'>
+                                    class='comp-image__slide'
+                                    ng-class='{"fade-out":$index != sliderState}'
+                                    >
                                  <comp-image
                                     role='slider image'
                                     href='img.href'
                                     alt='img.alt'
                                     class-name='img.className'
+                                    object-fit='img.objectFit'
                                  ></compImage>
                                 </a>
                             </div>
@@ -565,6 +607,7 @@
      activeIndicator: '<?',
      activeTimer: '<?',
      timerDuration: '<?',
+     trDuration: '<?',
     },
    };
   };
@@ -572,13 +615,28 @@
  })();
  (function imageSlideShow() {
   const slideShowDdo = () => {
-   const componentLink = (scope, jqContainer) => {};
+   const componentLink = (scope, jqContainer) => {
+    scope.closeSlideShowClicked = () => {
+     scope.isOpen = false;
+    };
+   };
    const createTemplate = () => {
     return `
-    <div class="comp-slide-show__container">
-      <button type='button' class="comp-slide-show__close">
+    <div 
+      class="comp-slide-show__container" 
+      ng-show="isOpen">
+      <button 
+        ng-click="closeSlideShowClicked()"
+        type='button' 
+        class="comp-slide-show__close">
         <i class='opt-menu-times util-hover-cl--gold'></i>
       </button>
+       <comp-img-slider
+          class="comp-slide-show__slider"
+          images="images"
+          active-timer="false"
+          tr-duration="trDuration"
+         ></comp-img-slider>
     </div>
     `;
    };
@@ -589,6 +647,7 @@
     scope: {
      isOpen: '=',
      images: '<?',
+     trDuration: '<?',
     },
    };
   };

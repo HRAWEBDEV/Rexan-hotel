@@ -1,29 +1,6 @@
 $(() => {
- (() => {
-  const jqRoomFilterForm = $('[data-room-filter-form]');
-  const onFilterBtnClick = function (e) {
-   const activeStateClass = 'is-expanded';
-   const isExpanded = $(this).hasClass(activeStateClass);
-   const jqList = $(this).siblings('[data-room-filter-list]');
-   if (isExpanded) {
-    $(this).removeClass(activeStateClass);
-    jqList.slideUp(100);
-    return;
-   }
-   // *
-   const jqAllExpandedBtns = $(e.delegateTarget)
-    .find('[data-room-filter-btn]')
-    .filter(`.${activeStateClass}`);
-   jqAllExpandedBtns.each(function () {
-    $(this).removeClass(activeStateClass);
-    $(this).siblings('[data-room-filter-list]').slideUp(100);
-   });
-   $(this).addClass(activeStateClass);
-   jqList.slideDown(100);
-  };
-
-  jqRoomFilterForm.on('click', '[data-room-filter-btn]', onFilterBtnClick);
- })();
+ const { registerFilterSideBar } = toolsModule;
+ registerFilterSideBar();
 });
 (function roomsPage() {
  // * filters slide down
