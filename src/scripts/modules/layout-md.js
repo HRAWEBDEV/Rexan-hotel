@@ -313,14 +313,14 @@
       type="'link'"
       class-name="'gold'"
       text="'خرید دوره'"
-      navigate-to="'/TS/Time/Index'"
+      navigate-to="'/public/Time'"
       class="master__sign-buy-ct"
      ></comp-link>
      <comp-select
         class="master-language__ct"
         model-value="defaultLanguageKey"
         data="supportedLanguages"
-        ng-if='false'
+        ng-if="false"
         ></comp-select>
     <comp-button
       data-master-nav-ct

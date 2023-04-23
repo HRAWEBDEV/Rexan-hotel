@@ -1,0 +1,101 @@
+.floor__intro-banner {
+ background-color: rgb(var(--cl-white-150));
+ padding: var(--gap);
+}
+.floor__intro-img {
+ object-fit: contain;
+}
+.rooms__preview {
+ padding-inline: var(--section-inline-offset);
+ padding-block: var(--section-block-offset);
+}
+.rooms__view {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(min(100%, 22em), 1fr));
+ gap: var(--gap-2x);
+}
+.room__card {
+ display: flex;
+ flex-direction: column;
+ min-height: 17em;
+ border: 1px solid rgb(var(--cl-white-200));
+ border-radius: var(--br-ra-main);
+ background-color: rgb(var(--cl-white-150));
+ overflow: hidden;
+}
+.room__card-banner {
+ flex: 1;
+}
+.room__card-info {
+ padding: var(--gap-small);
+ display: grid;
+ gap: var(--gap-small);
+}
+
+.rooms__filters {
+ display: flex;
+ flex-wrap: wrap;
+ gap: var(--gap-2x);
+ align-items: center;
+ justify-content: space-between;
+ background-color: rgb(var(--cl-white-150));
+ margin-bottom: var(--gap-2x);
+ border: 1px solid rgb(var(--cl-white-100));
+ border-radius: var(--br-ra-main);
+ padding: var(--gap);
+}
+
+.rooms__select {
+ flex: 1;
+ display: flex;
+ gap: var(--gap-2x);
+ justify-content: flex-end;
+}
+.rooms__select > * {
+ flex-basis: 16em;
+ flex-shrink: 0;
+}
+.rooms__blocks-filter {
+ display: flex;
+ align-items: center;
+ gap: var(--gap-2x);
+}
+.rooms__blocks {
+ --block-bg: var(--cl-gold-accent);
+ --block-size: 4em;
+ position: relative;
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ gap: var(--gap);
+}
+.rooms__block:is(:hover, :focus, .is-selected),
+.rooms__block-ch:checked ~ .rooms__block-name,
+.rooms__block-ch:is(:hover, :focus) ~ .rooms__block-name {
+ --block-bg: var(--cl-red-accent);
+}
+.rooms__block-ch {
+ position: absolute;
+ width: 0;
+ height: 0;
+ opacity: 0;
+}
+.rooms__block:not(.all) {
+ font-family: var(--fn-fa-english);
+}
+.rooms__block-name {
+ border-radius: var(--br-ra-main);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ transition: var(--tr-all-normall);
+ color: var(--cl-light-fn);
+ background-color: var(--block-bg);
+ padding: 0.2em;
+ width: var(--block-size);
+ height: var(--block-size);
+ cursor: pointer;
+}
+
+@media (max-width: 50em) {
+}

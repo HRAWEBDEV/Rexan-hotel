@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/src/styles/components/component.css" />
   <link rel="stylesheet" href="/src/styles/global/layout.css" />
   <!-- * page style -->
-  <link rel="stylesheet" href="/src/styles/pages/time.css" />
+  <link rel="stylesheet" href="/src/styles/pages/time/index.css" />
   <!-- * libraries -->
   <script src="/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="/node_modules/angular/angular.min.js"></script>
@@ -22,7 +22,7 @@
   <script src="/src/scripts/modules/layout-md.js" defer></script>
   <script src="/src/scripts/modules/wrapper-md.js" defer></script>
   <!-- * page script -->
-  <script src="/src/scripts/pages/time.js" defer></script>
+  <script src="/src/scripts/pages/time/index.js" defer></script>
   <title>Rexan hotel plans</title>
  </head>
  <body
@@ -87,6 +87,7 @@
             class-name="'gold'"
             text="'لیست اتاق ها'"
             logo="true"
+            navigate-to="'/public/rooms'"
             on-click="timeShowRoomsClicked"
             click-overload="TmpTime"
            ></comp-link>

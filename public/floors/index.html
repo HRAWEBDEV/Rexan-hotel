@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fa">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- * google index -->
+  <meta name="robots" content="noindex" />
+  <!-- * styles -->
+  <link rel="stylesheet" href="/src/styles/global/reset.css" />
+  <link rel="stylesheet" href="/src/assets/icons/style.css" />
+  <link rel="stylesheet" href="/src/styles/components/component.css" />
+  <link rel="stylesheet" href="/src/styles/global/layout.css" />
+  <!-- * page style -->
+  <link rel="stylesheet" href="/src/styles/pages/floors/index.css" />
+  <!-- * libraries -->
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <!-- * modules -->
+  <script src="/src/scripts/modules/tools-md.js" defer></script>
+  <script src="/src/scripts/modules/components-md.js" defer></script>
+  <script src="/src/scripts/modules/layout-md.js" defer></script>
+  <script src="/src/scripts/modules/wrapper-md.js" defer></script>
+  <!-- * page script -->
+  <script src="/src/scripts/pages/floors/index.js" defer></script>
+  <title>Rexan hotel plans</title>
+ </head>
+ <body dir="rtl" ng-app="wrapperModule" ng-controller="wrapperController">
+  <div
+   class="master__conatiner"
+   id="master__container"
+   ng-controller="floorController"
+  >
+   <master-header></master-header>
+   <div class="master__content">
+    <master-aside></master-aside>
+    <main class="master__main">
+     <section class="master__intro-section">
+      <header class="master__intro-header">
+       <div class="master__intro-title-wrapper">
+        <h1 class="master__intro-title">
+         کشف هتل رکسان-
+         <span>طبقه سوم</span>
+        </h1>
+       </div>
+       <a
+        href="#plans__section"
+        class="master__intro-banner floor__intro-banner"
+       >
+        <comp-image
+         class-name="'master__intro-img floor__intro-img'"
+         href="'/TS/wwwroot/assets/images/Floors/floorPlan.png'"
+        ></comp-image>
+       </a>
+      </header>
+      <article class="master__intro-desc util-read-txt">
+       <p>
+        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+        متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
+        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با
+        نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
+        خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید
+        داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان
+        رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
+        پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+       </p>
+       <p>
+        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+        متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
+        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با
+        نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
+        خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید
+        داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان
+        رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
+        پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+       </p>
+      </article>
+     </section>
+     <section class="rooms__preview">
+      <div class="rooms__filters">
+       <div class="rooms__blocks-filter">
+        <span>انتخاب بلوک</span>
+        <div class="rooms__blocks">
+         <label class="rooms__block">
+          <input class="rooms__block-ch" type="checkbox" />
+          <span class="rooms__block-name"> A </span>
+         </label>
+         <label class="rooms__block">
+          <input class="rooms__block-ch" type="checkbox" />
+          <span class="rooms__block-name"> B </span>
+         </label>
+         <label class="rooms__block all">
+          <input class="rooms__block-ch" type="checkbox" />
+          <span class="rooms__block-name"> همه </span>
+         </label>
+        </div>
+       </div>
+       <div class="rooms__select">
+        <comp-combo label="'متراژ'"></comp-combo>
+        <comp-combo label="'نوع اتاق'"></comp-combo>
+       </div>
+      </div>
+      <article class="rooms__view">
+       <a href="#" class="room__card">
+        <div class="room__card-banner">
+         <comp-image
+          class-name="''"
+          href="'/TS/wwwroot/assets/images/room-type-1.png'"
+         ></comp-image>
+        </div>
+        <div class="room__card-info">
+         <span>301</span>
+         <span>بلوک A</span>
+         <span>36متر</span>
+        </div>
+       </a>
+      </article>
+     </section>
+     <master-footer></master-footer>
+    </main>
+   </div>
+  </div>
+ </body>
+</html>

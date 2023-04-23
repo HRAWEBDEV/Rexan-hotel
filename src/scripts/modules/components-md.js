@@ -1,14 +1,14 @@
 (function componentsModule() {
-    const componentModule = angular.module('componentsModule', []);
-    (function buttonComponent() {
-        const btnDdo = () => {
-            const componentLink = (scope, jqContainer) => {
-                scope.btnClicked = (e) => {
-                    scope.onClick && scope.onClick(e, scope.clickOverload);
-                };
-            };
-            const createView = () => {
-                return `
+ const componentModule = angular.module('componentsModule', []);
+ (function buttonComponent() {
+  const btnDdo = () => {
+   const componentLink = (scope, jqContainer) => {
+    scope.btnClicked = (e) => {
+     scope.onClick && scope.onClick(e, scope.clickOverload);
+    };
+   };
+   const createView = () => {
+    return `
         <a type="{{type||''}}" class="comp-btn"
             ng-href="{{navigateTo || '#'}}"
             ng-class="[className,type,{'no-hover':noHover,'no-focus':noFocus}]"
@@ -24,50 +24,50 @@
          </div>
         </a>
     `;
-            };
-            return {
-                restrict: 'E',
-                template: createView(),
-                link: componentLink,
-                scope: {
-                    text: '<?',
-                    icon: '<?',
-                    logo: '<?',
-                    className: '<?',
-                    noHover: '<?',
-                    noFocus: '<?',
-                    type: '<?',
-                    navigateTo: '<?',
-                    onClick: '<?',
-                    clickOverload: "<?"
-                },
-            };
-        };
-        componentModule.directive('compLink', btnDdo);
-    })();
-    (function imageComponent() {
-        const imageDdo = () => {
-            const componentLink = (scope, jqContainer) => {
-                const componentUi = () => {
-                    const jqImageEl = jqContainer.find('[data-comp-image]');
-                    const jqLoaderWrapper = jqContainer.find('[data-comp-image-wrapper]');
-                    const imageOnLoad = () => {
-                        jqLoaderWrapper.fadeOut(200);
-                    };
-                    const imageOnError = () => {
-                        jqLoaderWrapper.fadeOut(200);
-                    };
-                    jqImageEl.on('load', imageOnLoad);
-                    jqImageEl.on('error', imageOnLoad);
-                };
-                const controller = () => {
-                    componentUi();
-                    scope.imageSrc = scope.href;
-                };
-                controller();
-            };
-            const createView = () => {
-                return `
+   };
+   return {
+    restrict: 'E',
+    template: createView(),
+    link: componentLink,
+    scope: {
+     text: '<?',
+     icon: '<?',
+     logo: '<?',
+     className: '<?',
+     noHover: '<?',
+     noFocus: '<?',
+     type: '<?',
+     navigateTo: '<?',
+     onClick: '<?',
+     clickOverload: '<?',
+    },
+   };
+  };
+  componentModule.directive('compLink', btnDdo);
+ })();
+ (function imageComponent() {
+  const imageDdo = () => {
+   const componentLink = (scope, jqContainer) => {
+    const componentUi = () => {
+     const jqImageEl = jqContainer.find('[data-comp-image]');
+     const jqLoaderWrapper = jqContainer.find('[data-comp-image-wrapper]');
+     const imageOnLoad = () => {
+      jqLoaderWrapper.fadeOut(200);
+     };
+     const imageOnError = () => {
+      jqLoaderWrapper.fadeOut(200);
+     };
+     jqImageEl.on('load', imageOnLoad);
+     jqImageEl.on('error', imageOnLoad);
+    };
+    const controller = () => {
+     componentUi();
+     scope.imageSrc = scope.href;
+    };
+    controller();
+   };
+   const createView = () => {
+    return `
     <div class='comp-image__wrapper'>
      <picture class='comp-image__picture'>
       <img loading="lazy" data-comp-image class='comp-image' 
@@ -83,49 +83,50 @@
      </div>
     </div>
     `;
-            };
-            return {
-                restrict: 'E',
-                template: createView(),
-                link: componentLink,
-                scope: {
-                    href: '<?',
-                    alt: '<?',
-                    className: '<?',
-                },
-            };
-        };
-        componentModule.directive('compImage', imageDdo);
-    })();
-    (function modalComponent() {
-        const componentLink = (scope, jqContainer) => {
-            const jqDialog = jqContainer.find('[data-comp-modal-dialog]');
-            const dialogEl = jqDialog.get(0);
-            const closeModal = () => {
-                dialogEl.close();
-            }
-            const openModal = () => {
-                dialogEl.showModal();
-            }
-            // events
-            jqDialog.on('click', '[data-btn-role="close-modal"]', closeModal);
-            scope.$watch("width", (oldValue, newValue) => {
-                const setModalWidth = () => {
-                    jqDialog.css({
-                        "--comp-modal-width": `${scope.width}`
-                    });
-                }
-                newValue && setModalWidth();
-            })
-            // reveal api
-            scope.getApi && scope.getApi({
-                openModal,
-                closeModal
-            });
-        };
-        const modalDdo = () => {
-            const createView = () => {
-                return `
+   };
+   return {
+    restrict: 'E',
+    template: createView(),
+    link: componentLink,
+    scope: {
+     href: '<?',
+     alt: '<?',
+     className: '<?',
+    },
+   };
+  };
+  componentModule.directive('compImage', imageDdo);
+ })();
+ (function modalComponent() {
+  const componentLink = (scope, jqContainer) => {
+   const jqDialog = jqContainer.find('[data-comp-modal-dialog]');
+   const dialogEl = jqDialog.get(0);
+   const closeModal = () => {
+    dialogEl.close();
+   };
+   const openModal = () => {
+    dialogEl.showModal();
+   };
+   // events
+   jqDialog.on('click', '[data-btn-role="close-modal"]', closeModal);
+   scope.$watch('width', (oldValue, newValue) => {
+    const setModalWidth = () => {
+     jqDialog.css({
+      '--comp-modal-width': `${scope.width}`,
+     });
+    };
+    newValue && setModalWidth();
+   });
+   // reveal api
+   scope.getApi &&
+    scope.getApi({
+     openModal,
+     closeModal,
+    });
+  };
+  const modalDdo = () => {
+   const createView = () => {
+    return `
                 <dialog
                     data-comp-modal-dialog
                     class="comp-modal__dialog"
@@ -146,79 +147,85 @@
                     </main>    
                 </dialog>
                   `;
-            };
-            return {
-                restrict: 'E',
-                template: createView(),
-                link: componentLink,
-                transclude: true,
-                scope: {
-                    getApi: "<?",
-                    width: "<?",
-                    deactiveBodyScroll: "<?",
-                    modalTitle: "<?"
-                },
-            };
-        };
-        componentModule.directive('compModal', modalDdo);
-    })();
-    (function selectComponent() {
-        const componentLink = (scope, jqContainer) => {
-            scope.openOnTop = false;
-            scope.selectMaxHeight = 15;
-            scope.isSelectListExpanded = false;
-            scope.activeClear = scope.activeClear == undefined ? true : scope.activeClear;
-            const jqSelectWrapper = jqContainer.find("[data-comp-select-wrapper]");
-            const closeSelect = () => {
-                scope.$apply(() => {
-                    removeWinWatcher();
-                    scope.isSelectListExpanded = false;
-                })
-            }
-            const toggleSelectList = () => {
-                scope.openOnTop = false;
-                removeWinWatcher();
-                // * is open
-                if (!scope.isSelectListExpanded) {
-                    addWinWatcher();
-                    const selectBottomOffset = $(document).height() - (jqSelectWrapper.offset().top + jqSelectWrapper.height());
-                    const documentFontSize = Number($(document).find("body").css("font-size").replace("px", ""));
-                    if (documentFontSize * 17 >= selectBottomOffset) scope.openOnTop = true;
-                }
-                scope.isSelectListExpanded = !scope.isSelectListExpanded;
-            }
-            const selectWinWatcher = (e) => {
-                const jqTargetContainer = $(e.target).closest(jqContainer.get(0));
-                if (jqTargetContainer.length == 0) closeSelect();
-            }
-            const addWinWatcher = () => {
-                $(window).on("click", selectWinWatcher);
-            }
-            const removeWinWatcher = () => {
-                $(window).off("click", selectWinWatcher);
-            }
-            scope.selectChanged = (e) => {
-                scope.selectedOption = scope.data.find((item) => item.Key == scope.modelValue);
-                scope.onChange && scope.onChange(e);
-            }
-            scope.selectClicked = () => {
-                toggleSelectList();
-            };
-            scope.itemClicked = (e, item) => {
-                scope.modelValue = item.Key;
-                toggleSelectList();
-            }
-            scope.selectClearClicked = () => {
-                scope.modelValue = undefined;
-            }
-            scope.$watch('modelValue', function (oldValue, newValue) {
-                if (oldValue == newValue) return;
-                scope.selectChanged();
-            });
-
-        };
-        const createComboView = () => {
-            return `
+   };
+   return {
+    restrict: 'E',
+    template: createView(),
+    link: componentLink,
+    transclude: true,
+    scope: {
+     getApi: '<?',
+     width: '<?',
+     deactiveBodyScroll: '<?',
+     modalTitle: '<?',
+    },
+   };
+  };
+  componentModule.directive('compModal', modalDdo);
+ })();
+ (function selectComponent() {
+  const componentLink = (scope, jqContainer) => {
+   scope.openOnTop = false;
+   scope.selectMaxHeight = 15;
+   scope.isSelectListExpanded = false;
+   scope.activeClear =
+    scope.activeClear == undefined ? true : scope.activeClear;
+   const jqSelectWrapper = jqContainer.find('[data-comp-select-wrapper]');
+   const closeSelect = () => {
+    scope.$apply(() => {
+     removeWinWatcher();
+     scope.isSelectListExpanded = false;
+    });
+   };
+   const toggleSelectList = () => {
+    scope.openOnTop = false;
+    removeWinWatcher();
+    // * is open
+    if (!scope.isSelectListExpanded) {
+     addWinWatcher();
+     const selectBottomOffset =
+      $(document).height() -
+      (jqSelectWrapper.offset().top + jqSelectWrapper.height());
+     const documentFontSize = Number(
+      $(document).find('body').css('font-size').replace('px', '')
+     );
+     if (documentFontSize * 17 >= selectBottomOffset) scope.openOnTop = true;
+    }
+    scope.isSelectListExpanded = !scope.isSelectListExpanded;
+   };
+   const selectWinWatcher = (e) => {
+    const jqTargetContainer = $(e.target).closest(jqContainer.get(0));
+    if (jqTargetContainer.length == 0) closeSelect();
+   };
+   const addWinWatcher = () => {
+    $(window).on('click', selectWinWatcher);
+   };
+   const removeWinWatcher = () => {
+    $(window).off('click', selectWinWatcher);
+   };
+   scope.selectChanged = (e) => {
+    scope.selectedOption = scope.data.find(
+     (item) => item.Key == scope.modelValue
+    );
+    scope.onChange && scope.onChange(e);
+   };
+   scope.selectClicked = () => {
+    toggleSelectList();
+   };
+   scope.itemClicked = (e, item) => {
+    scope.modelValue = item.Key;
+    toggleSelectList();
+   };
+   scope.selectClearClicked = () => {
+    scope.modelValue = undefined;
+   };
+   scope.$watch('modelValue', function (oldValue, newValue) {
+    if (oldValue == newValue) return;
+    scope.selectChanged();
+   });
+  };
+  const createComboView = () => {
+   return `
           <fieldset
             data-comp-select-wrapper
             ng-class="{'open-on-top':openOnTop}"
@@ -253,9 +260,9 @@
             </div>
           </fieldset>
             `;
-        }
-        const createSelectView = () => {
-            return `
+  };
+  const createSelectView = () => {
+   return `
       <fieldset class='comp-fmel__wrapper'
             ng-class="{'open-on-top':openOnTop}"
             aria-expanded='{{isSelectListExpanded}}'
@@ -284,38 +291,38 @@
         </div>
       </fieldset>
     `;
-        };
-        const getSelectFactoryObject = (type) => {
-            return () => {
-                return {
-                    restrict: 'E',
-                    template: type == "combo" ? createComboView() : createSelectView(),
-                    link: componentLink,
-                    scope: {
-                        label: "<?",
-                        data: "<?",
-                        modelValue: "=",
-                        onChange: "<?",
-                        activeClear: "<?"
-                    }
-                }
-            }
-        }
-        componentModule.directive("compCombo", getSelectFactoryObject("combo"));
-        componentModule.directive('compSelect', getSelectFactoryObject());
-    })();
-    (function checkBox() {
-        const checkBoxDdo = () => {
-            const componentLink = (scope, jqContainer) => {
-                scope.checkClicked = function (e) {
-                    scope.onClick && scope.onClick(e, scope.overload);
-                }
-                scope.checkedChanged = function () {
-                    scope.onChange && scope.onChange(scope.overload, scope.modelValue);
-                }
-            };
-            const createTemplate = () => {
-                return `
+  };
+  const getSelectFactoryObject = (type) => {
+   return () => {
+    return {
+     restrict: 'E',
+     template: type == 'combo' ? createComboView() : createSelectView(),
+     link: componentLink,
+     scope: {
+      label: '<?',
+      data: '<?',
+      modelValue: '=',
+      onChange: '<?',
+      activeClear: '<?',
+     },
+    };
+   };
+  };
+  componentModule.directive('compCombo', getSelectFactoryObject('combo'));
+  componentModule.directive('compSelect', getSelectFactoryObject());
+ })();
+ (function checkBox() {
+  const checkBoxDdo = () => {
+   const componentLink = (scope, jqContainer) => {
+    scope.checkClicked = function (e) {
+     scope.onClick && scope.onClick(e, scope.overload);
+    };
+    scope.checkedChanged = function () {
+     scope.onChange && scope.onChange(scope.overload, scope.modelValue);
+    };
+   };
+   const createTemplate = () => {
+    return `
     <fieldset class='comp-check__fieldset'>
       <input class='comp-check'
        id="{{id}}"
@@ -327,35 +334,35 @@
       <label class='comp-check__label' for="{{id}}">{{label}}</label>
     </fieldset>
     `;
-            };
-            return {
-                restrict: 'E',
-                template: createTemplate(),
-                link: componentLink,
-                scope: {
-                    label: '<?',
-                    modelValue: '=',
-                    id: '<?',
-                    onClick: '<?',
-                    onChange: '<?',
-                    overload: '<?'
-                },
-            };
-        };
-        componentModule.directive('compCheckbox', checkBoxDdo);
-    })();
-    (function radioBox() {
-        const radioBoxDdo = () => {
-            const componentLink = (scope, jqContainer) => {
-                scope.radioClicked = function (e) {
-                    scope.onClick && scope.onClick(e, scope.overload);
-                }
-                scope.radioChanged = function () {
-                    scope.onChange && scope.onChange(scope.overload);
-                }
-            };
-            const createTemplate = () => {
-                return `
+   };
+   return {
+    restrict: 'E',
+    template: createTemplate(),
+    link: componentLink,
+    scope: {
+     label: '<?',
+     modelValue: '=',
+     id: '<?',
+     onClick: '<?',
+     onChange: '<?',
+     overload: '<?',
+    },
+   };
+  };
+  componentModule.directive('compCheckbox', checkBoxDdo);
+ })();
+ (function radioBox() {
+  const radioBoxDdo = () => {
+   const componentLink = (scope, jqContainer) => {
+    scope.radioClicked = function (e) {
+     scope.onClick && scope.onClick(e, scope.overload);
+    };
+    scope.radioChanged = function () {
+     scope.onChange && scope.onChange(scope.overload);
+    };
+   };
+   const createTemplate = () => {
+    return `
     <fieldset class='comp-check__fieldset'>
       <input class='comp-radio'
            id="{{id}}"
@@ -368,34 +375,34 @@
       <label class='comp-check__label' for="{{id}}">{{label}}</label>
     </fieldset>
     `;
-            };
-            return {
-                restrict: 'E',
-                template: createTemplate(),
-                link: componentLink,
-                scope: {
-                    label: '<?',
-                    modelValue: '=',
-                    id: '<?',
-                    onClick: '<?',
-                    overload: '<?',
-                    name: '<?',
-                    onChange:'<?'
-                },
-            };
-        };
-        componentModule.directive('compRadio', radioBoxDdo);
-    })();
-    (function linkComponent() {
-        const btnDdo = () => {
-            const componentLink = (scope, jqContainer) => {
-                scope.btnClicked = (e) => {
-                    scope.onClick && scope.onClick(e, scope.overload, scope.overload2);
-                    //if (scope.clicked ? scope.clicked(e, scope.overload) : false) return;
-                };
-            };
-            const createView = () => {
-                return `
+   };
+   return {
+    restrict: 'E',
+    template: createTemplate(),
+    link: componentLink,
+    scope: {
+     label: '<?',
+     modelValue: '=',
+     id: '<?',
+     onClick: '<?',
+     overload: '<?',
+     name: '<?',
+     onChange: '<?',
+    },
+   };
+  };
+  componentModule.directive('compRadio', radioBoxDdo);
+ })();
+ (function linkComponent() {
+  const btnDdo = () => {
+   const componentLink = (scope, jqContainer) => {
+    scope.btnClicked = (e) => {
+     scope.onClick && scope.onClick(e, scope.overload, scope.overload2);
+     //if (scope.clicked ? scope.clicked(e, scope.overload) : false) return;
+    };
+   };
+   const createView = () => {
+    return `
     <button type="{{type||'button'}}" class="comp-btn"
     ng-class="[className,type,{'no-hover':noHover,'no-focus':noFocus}]"
     ng-click="btnClicked($event)"
@@ -410,82 +417,88 @@
      </div>
     </button>
     `;
-            };
-            return {
-                restrict: 'E',
-                template: createView(),
-                link: componentLink,
-                scope: {
-                    text: '<?',
-                    icon: '<?',
-                    logo: '<?',
-                    className: '<?',
-                    noHover: '<?',
-                    noFocus: '<?',
-                    type: '<?',
-                    navigateTo: '<?',
-                    onClick: '<?',
-                    overload: '<?',
-                    overload2: '<?'
-                },
-            };
-        };
-        componentModule.directive('compButton', btnDdo);
-    })();
-    (function imageSlider() {
-        const sliderDdo = () => {
-            const componentLink = (scope, jqContainer) => {
-                scope.activeController = scope.activeController == undefined ? true : scope.activeController;
-                scope.activeIndicator = scope.activeController == undefined ? true : scope.activeController;
-                scope.slidesCount = 0;
-                scope.sliderState = 0;
-                scope.sliderTimerId = null;
-                const jqSlideContainer = $(jqContainer).find("[data-comp-slider-container]");
-                const changeSliderState = (newState) => {
-                    jqSlideContainer.css("--slider-state", newState);
-                }
-                const changeSlide = (action) => {
-                    if (action == 'next') {
-                        scope.sliderState = scope.slidesCount - 1 > scope.sliderState ? scope.sliderState + 1 : 0;
-                    } else if (action == 'prev') {
-                        scope.sliderState = scope.sliderState > 0 ? scope.sliderState - 1 : scope.slidesCount - 1;
-                    }
-                    changeSliderState(scope.sliderState);
-                }
-                const deactiveTimer = () => {
-                    clearInterval(scope.sliderTimerId);
-                }
-                const activeTimer = () => {
-                    deactiveTimer();
-                    scope.sliderTimerId = setInterval(() => {
-                        scope.$apply(() => {
-                            changeSlide("next");
-                        });
-                    }, scope.timerDuration || 6000);
-                }
-                scope.controllerClicked = (action) => {
-                    deactiveTimer();
-                    changeSlide(action);
-                }
-                scope.slideSelectClicked = (index) => {
-                    deactiveTimer();
-                    scope.sliderState = index;
-                    changeSliderState(index);
-                }
-                scope.$watch("images", (oldValue, newValue) => {
-                    if (!Array.isArray(newValue)) return;
-                    scope.slidesCount = newValue.length;
-                });
-                scope.$watch("activeTimer", (oldValue, newValue) => {
-                    if (newValue) {
-                        activeTimer();
-                        return;
-                    }
-                    deactiveTimer();
-                });
-            }
-            const createTemplate = () => {
-                return `
+   };
+   return {
+    restrict: 'E',
+    template: createView(),
+    link: componentLink,
+    scope: {
+     text: '<?',
+     icon: '<?',
+     logo: '<?',
+     className: '<?',
+     noHover: '<?',
+     noFocus: '<?',
+     type: '<?',
+     navigateTo: '<?',
+     onClick: '<?',
+     overload: '<?',
+     overload2: '<?',
+    },
+   };
+  };
+  componentModule.directive('compButton', btnDdo);
+ })();
+ (function imageSlider() {
+  const sliderDdo = () => {
+   const componentLink = (scope, jqContainer) => {
+    scope.activeController =
+     scope.activeController == undefined ? true : scope.activeController;
+    scope.activeIndicator =
+     scope.activeController == undefined ? true : scope.activeController;
+    scope.slidesCount = 0;
+    scope.sliderState = 0;
+    scope.sliderTimerId = null;
+    const jqSlideContainer = $(jqContainer).find(
+     '[data-comp-slider-container]'
+    );
+    const changeSliderState = (newState) => {
+     jqSlideContainer.css('--slider-state', newState);
+    };
+    const changeSlide = (action) => {
+     if (action == 'next') {
+      scope.sliderState =
+       scope.slidesCount - 1 > scope.sliderState ? scope.sliderState + 1 : 0;
+     } else if (action == 'prev') {
+      scope.sliderState =
+       scope.sliderState > 0 ? scope.sliderState - 1 : scope.slidesCount - 1;
+     }
+     changeSliderState(scope.sliderState);
+    };
+    const deactiveTimer = () => {
+     clearInterval(scope.sliderTimerId);
+    };
+    const activeTimer = () => {
+     deactiveTimer();
+     scope.sliderTimerId = setInterval(() => {
+      scope.$apply(() => {
+       changeSlide('next');
+      });
+     }, scope.timerDuration || 6000);
+    };
+    scope.controllerClicked = (action) => {
+     deactiveTimer();
+     changeSlide(action);
+    };
+    scope.slideSelectClicked = (index) => {
+     deactiveTimer();
+     scope.sliderState = index;
+     changeSliderState(index);
+    };
+    scope.$watch('images', (oldValue, newValue) => {
+     if (!Array.isArray(newValue)) return;
+     scope.slidesCount = newValue.length;
+    });
+    scope.$watch('activeTimer', (oldValue, newValue) => {
+     if (newValue) {
+      activeTimer();
+      return;
+     }
+     deactiveTimer();
+    });
+   };
+   const createTemplate = () => {
+    return `
                     <div
                         data-comp-slider-container
                         class='comp-image__slider-container'
@@ -541,20 +554,20 @@
                         </div>
                     </div>
                 `;
-            }
-            return {
-                restrict: "E",
-                link: componentLink,
-                template: createTemplate(),
-                scope: {
-                    images: "<?",
-                    activeController: "<?",
-                    activeIndicator: "<?",
-                    activeTimer: "<?",
-                    timerDuration: "<?"
-                }
-            }
-        }
-        componentModule.directive("compImgSlider", sliderDdo);
-    })();
+   };
+   return {
+    restrict: 'E',
+    link: componentLink,
+    template: createTemplate(),
+    scope: {
+     images: '<?',
+     activeController: '<?',
+     activeIndicator: '<?',
+     activeTimer: '<?',
+     timerDuration: '<?',
+    },
+   };
+  };
+  componentModule.directive('compImgSlider', sliderDdo);
+ })();
 })();

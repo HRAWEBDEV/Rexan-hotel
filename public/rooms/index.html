@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fa">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- * google index -->
+  <meta name="robots" content="noindex" />
+  <!-- * styles -->
+  <link rel="stylesheet" href="/src/styles/global/reset.css" />
+  <link rel="stylesheet" href="/src/assets/icons/style.css" />
+  <link rel="stylesheet" href="/src/styles/components/component.css" />
+  <link rel="stylesheet" href="/src/styles/global/layout.css" />
+  <!-- * page style -->
+  <link rel="stylesheet" href="/src/styles/pages/rooms/index.css" />
+  <!-- * libraries -->
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <!-- * modules -->
+  <script src="/src/scripts/modules/tools-md.js" defer></script>
+  <script src="/src/scripts/modules/components-md.js" defer></script>
+  <script src="/src/scripts/modules/layout-md.js" defer></script>
+  <script src="/src/scripts/modules/wrapper-md.js" defer></script>
+  <!-- * page script -->
+  <script src="/src/scripts/pages/rooms/index.js" defer></script>
+  <title>Rexan hotel plans</title>
+ </head>
+ <body
+  data-page-loader
+  data-referesh-loader
+  data-page-loader-active="true"
+  data-referesh-loader-active="{{pageRefreshLoaderStatus}}"
+  dir="rtl"
+  ng-app="wrapperModule"
+  ng-controller="wrapperController"
+ >
+  <div
+   ng-controller="roomsController"
+   class="master__conatiner"
+   id="master__container"
+  >
+   <master-header from='"rooms"'></master-header>
+   <div data-master-card-container class="master-card__container">
+    <div class="master-card__wrapper">
+     <div class="master-card__empty" ng-if="BuyTimes.length==0">
+      <i class="opt-shopping-cart"></i>
+      <span class="util-txt-medium">دوره ای انتخاب نشده است</span>
+     </div>
+     <div class="master-card__bill-container">
+      <ul class="master-card__bill-list">
+       <li class="master-card__bill" ng-repeat="TmpBuyTime in BuyTimes">
+        <div class="master-card__bill-row">
+         <div>
+          <span>شماره اتاق:‌</span>
+          <span class="util-txt-medium">{{TmpBuyTime.RoomLabel}}</span>
+         </div>
+         <div>
+          <span class="util-txt-red util-txt-medium"
+           >{{TmpBuyTime.Price | currency: "" : 0}} ریال</span
+          >
+         </div>
+        </div>
+        <div class="master-card__bill-row">
+         <div>
+          <span>نوع اتاق:‌</span>
+          <span class="util-txt-medium">{{TmpBuyTime.RoomTypeName}}</span>
+         </div>
+         <div>
+          <button
+           class="util-txt-red"
+           ng-click="RemoveRoomTimeClicked(TmpBuyTime)"
+          >
+           <i class="opt-trash-can util-fn-1-5"></i>
+          </button>
+         </div>
+        </div>
+        <div class="master-card__bill-row">
+         <div>
+          <span>دوره:‌</span>
+          <span class="util-txt-medium">{{TmpBuyTime.TimeCode}}</span>
+         </div>
+        </div>
+       </li>
+      </ul>
+      <div class="master-card__total util-txt-medium">
+       <span>جمع کل</span>
+       <span>{{SumPrice | currency: "" : 0}} ریال</span>
+      </div>
+     </div>
+     <comp-link
+      class="room__times-reserve-btn"
+      class-name="'gold'"
+      text="'ارسال به سبد خرید'"
+      navigate-to="'/TS/PrePayment/Index'"
+     ></comp-link>
+    </div>
+   </div>
+   <div class="master__content">
+    <main data-master-main class="master__main rooms-main">
+     <div class="ms-page-intro">
+      <h1 class="ms-page-intro__title">کشف هتل رکسان - لیست اتاق ها</h1>
+     </div>
+     <div class="rooms-content">
+      <aside class="rooms-filters__container">
+       <div class="rooms-filters__stick">
+        <div class="rooms-filter__view">
+         <button
+          type="button"
+          aria-label="change filters view"
+          class="rooms-filter__view-btn"
+         >
+          <i class="opt-grid-view"></i>
+         </button>
+         <button
+          type="button"
+          aria-label="change filters view"
+          class="rooms-filter__view-btn is-selected"
+         >
+          <i class="opt-list-view"></i>
+         </button>
+        </div>
+        <form data-room-filter-form class="rooms-filter__form">
+         <div class="rooms-filter__type">
+          <div data-room-filter-btn class="rooms-filter__top" tabindex="0">
+           <div class="rooms-filter__info">
+            <p class="rooms-filter__title">
+             نوع دوره
+             <i class="filter-indicator"></i>
+            </p>
+            <p class="util-txt-medium"></p>
+           </div>
+           <i class="opt-arrow-down util-fn-1-5"></i>
+          </div>
+          <div
+           data-room-filter-list
+           class="rooms-filter__list util-d-grid util-gap"
+          >
+           <div class="util-d-grid util-small-gap">
+            <comp-checkbox
+             ng-repeat="TmpTimeType in TimeTypes"
+             label="TmpTimeType.Name"
+             data-id="TmpTimeType.ID"
+             model-value="TmpTimeType.Selected"
+             on-click="TimeTypeClicked"
+             on-change="TimeTypeChanged"
+             overload="TmpTimeType"
+            >
+            </comp-checkbox>
+           </div>
+          </div>
+         </div>
+         <div class="rooms-filter__type">
+          <div data-room-filter-btn class="rooms-filter__top" tabindex="0">
+           <div class="rooms-filter__info">
+            <p class="rooms-filter__title">
+             دوره
+             <i class="filter-indicator"></i>
+            </p>
+            <p class="util-txt-medium"></p>
+           </div>
+           <i class="opt-arrow-down util-fn-1-5"></i>
+          </div>
+          <div
+           data-room-filter-list
+           class="rooms-filter__list util-d-grid util-gap"
+          >
+           <div class="util-d-grid util-small-gap">
+            <comp-checkbox
+             ng-repeat="TmpTime in Times"
+             label="TmpTime.Name"
+             data-id="TmpTime.ID"
+             model-value="TmpTime.Selected"
+             on-change="TimeChanged"
+             overload="TmpTime"
+             on-click="TimeClicked"
+            >
+            </comp-checkbox>
+           </div>
+          </div>
+         </div>
+         <div class="rooms-filter__type">
+          <div data-room-filter-btn class="rooms-filter__top" tabindex="0">
+           <div class="rooms-filter__info">
+            <p class="rooms-filter__title">
+             نوع اتاق
+             <i class="filter-indicator"></i>
+            </p>
+            <p class="util-txt-medium"></p>
+           </div>
+           <i class="opt-arrow-down util-fn-1-5"></i>
+          </div>
+          <div
+           data-room-filter-list
+           class="rooms-filter__list util-d-grid util-gap"
+          >
+           <div class="util-d-grid util-small-gap">
+            <comp-checkbox
+             ng-repeat="TmpRoomType in RoomTypes"
+             label="TmpRoomType.Name"
+             data-id="TmpRoomType.ID"
+             model-value="TmpRoomType.Selected"
+             overload="TmpRoomType"
+             on-change="RoomTypeChanged"
+             on-click="RoomTypeClicked"
+            >
+            </comp-checkbox>
+           </div>
+          </div>
+         </div>
+         <div class="rooms-filter__type">
+          <div data-room-filter-btn class="rooms-filter__top" tabindex="0">
+           <div class="rooms-filter__info">
+            <p class="rooms-filter__title">
+             طبقه
+             <i class="filter-indicator"></i>
+            </p>
+            <p class="util-txt-medium"></p>
+           </div>
+           <i class="opt-arrow-down util-fn-1-5"></i>
+          </div>
+          <div
+           data-room-filter-list
+           class="rooms-filter__list util-d-grid util-gap"
+          >
+           <div class="util-d-grid util-small-gap">
+            <comp-checkbox
+             ng-repeat="TmpFloor in Floors"
+             label="TmpFloor.Value"
+             data-id="TmpFloor.ID"
+             model-value="TmpFloor.Selected"
+             overload="TmpFloor"
+             on-change="FloorChanged"
+             on-click="FloorClicked"
+            >
+            </comp-checkbox>
+           </div>
+          </div>
+         </div>
+        </form>
+       </div>
+      </aside>
+      <div data-rooms-card-list class="rooms-card-list">
+       <article data-room-card class="room-card">
+        <div class="room-card__main">
+         <a href="#" class="room-card__banner">
+          <comp-image
+           class-name="'room-card__img'"
+           href="'/src/assets/images/Rooms/plan.png'"
+          ></comp-image>
+         </a>
+         <div class="room-card__info">
+          <div class="room-card__desc">
+           <ul class="room-card__desc-list">
+            <li class="room-card__desc-item">
+             <span>شماره اتاق:‌</span>
+             <span class="util-txt-red util-txt-medium">{{TmpRoom.ID}}</span>
+            </li>
+            <li class="room-card__desc-item">
+             <span>متراژ:‌</span>
+             <span class="util-txt-red util-txt-medium"
+              >{{TmpRoom.Meterage}}</span
+             >
+            </li>
+            <li class="room-card__desc-item">
+             <span>نوع اتاق:‌</span>
+             <span class="util-txt-red util-txt-medium">
+              {{TmpRoom.RoomTypeName}}
+             </span>
+            </li>
+            <li class="room-card__desc-item">
+             <span>شروع قیمت:‌</span>
+             <span class="util-txt-red util-txt-medium"
+              >{{TmpRoom.Price | currency: "" : 0}} ریال</span
+             >
+            </li>
+            <li class="room-card__desc-item">
+             <span>طبقه:‌</span>
+             <span class="util-txt-red util-txt-medium">{{TmpRoom.Floor}}</span>
+            </li>
+            <li class="room-card__desc-item">
+             <span>بلوک:‌</span>
+             <span class="util-txt-red util-txt-medium"
+              >{{TmpRoom.Section}}</span
+             >
+            </li>
+            <li class="room-card__desc-item">
+             <span>حداکثر ظرفیت:‌</span>
+             <span class="util-txt-red util-txt-medium"
+              >{{TmpRoom.MaxBedCount}}</span
+             >
+            </li>
+            <li class="room-card__desc-item">
+             <span>ظرفیت باقیمانده کل دوره های این اتاق:‌</span>
+             <span class="util-txt-red util-txt-medium"
+              >{{TmpRoom.Capacity}}</span
+             >
+            </li>
+           </ul>
+          </div>
+          <div class="room-card__detail">
+           <comp-button
+            data-extra-ct="times"
+            class-name="'confirm'"
+            text="'لیست تمامی دوره ها'"
+            overload="TmpRoom"
+            on-click="RoomTimeClicked"
+           ></comp-button>
+           <comp-button
+            class-name="'confirm'"
+            text="'مشاهده پلن طبقه'"
+           ></comp-button>
+           <comp-button
+            data-extra-ct="facilities"
+            class-name="'confirm'"
+            overload="TmpRoom"
+            on-click="RoomFacilityClicked"
+            text="'امکانات'"
+           ></comp-button>
+          </div>
+         </div>
+        </div>
+        <div data-card-extra="facilities" class="room-card__extra facilities">
+         <div class="room-facilities">
+          <div class="room-facilities__list">
+           <div
+            class="util-d-flex util-small-gap util-a-i-c"
+            ng-repeat="RoomFacility in TmpRoom.Facilities"
+           >
+            @*<i class="opt-resturant"></i>*@
+            <span>{{RoomFacility.FacilityName}}</span>
+           </div>
+          </div>
+          <comp-link text="'اطلاعات بیشتر'" class-name="'gold'"></comp-link>
+         </div>
+        </div>
+        <div data-card-extra="times" class="room-card__extra times">
+         <div class="comp-sp-tb__container util-pad">
+          <div class="comp-sp-tb__res">
+           <table class="comp-sp-tb">
+            <thead>
+             <tr>
+              <th>
+               <div class="inner-cell">شماره دوره</div>
+              </th>
+              <th>
+               <div class="inner-cell">نوع دوره</div>
+              </th>
+              <th>
+               <div class="inner-cell">بازه زمانی</div>
+              </th>
+              <th>
+               <div class="inner-cell">مدت اقامت</div>
+              </th>
+              <th>
+               <div class="inner-cell">قیمت (تومان)</div>
+              </th>
+              <th>
+               <div class="inner-cell">وضعیت</div>
+              </th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr ng-repeat="TmpRoomTime in TmpRoom.Times">
+              <td>
+               <div class="inner-cell">{{TmpRoomTime.TimeCode}}</div>
+              </td>
+              <td>
+               <div class="inner-cell">{{TmpRoomTime.TimeTypeName}}</div>
+              </td>
+              <td>
+               <div class="inner-cell" style="text-align: right">
+                {{TmpRoomTime.DateDiscription}}
+               </div>
+              </td>
+              <td>
+               <div class="inner-cell">
+                {{TmpRoomTime.DateCount}} {{TmpRoomTime.UnitName}}
+               </div>
+              </td>
+              <td>
+               <div class="inner-cell">
+                {{TmpRoomTime.Price | currency: "" : 0}}
+               </div>
+              </td>
+              <td>
+               <div
+                class="inner-cell util-txt-red"
+                ng-if="TmpRoomTime.StatusID==2"
+               >
+                {{TmpRoomTime.StatusName}}
+               </div>
+               <div
+                class="inner-cell util-txt-gold"
+                ng-if="TmpRoomTime.StatusID==3"
+               >
+                <button>
+                 <i class="opt-checkmark util-fn-1-5"></i>
+                </button>
+               </div>
+               <comp-button
+                class="room__times-reserve-btn"
+                class-name="'gold'"
+                text="TmpRoomTime.StatusName"
+                ng-if="TmpRoomTime.StatusID==1"
+                on-click="BuyTimeClicked"
+                overload="TmpRoom"
+                overload2="TmpRoomTime"
+               >
+               </comp-button>
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </div>
+         </div>
+        </div>
+       </article>
+      </div>
+     </div>
+     <master-footer></master-footer>
+    </main>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fa">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- * google index -->
+  <meta name="robots" content="noindex" />
+  <!-- * styles -->
+  <link rel="stylesheet" href="/src/styles/global/reset.css" />
+  <link rel="stylesheet" href="/src/assets/icons/style.css" />
+  <link rel="stylesheet" href="/src/styles/components/component.css" />
+  <link rel="stylesheet" href="/src/styles/global/layout.css" />
+  <!-- * page style -->
+  <link rel="stylesheet" href="/src/styles/pages/payment/pre.css" />
+  <!-- * libraries -->
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <!-- * modules -->
+  <script src="/src/scripts/modules/tools-md.js" defer></script>
+  <script src="/src/scripts/modules/components-md.js" defer></script>
+  <script src="/src/scripts/modules/layout-md.js" defer></script>
+  <script src="/src/scripts/modules/wrapper-md.js" defer></script>
+  <!-- * page script -->
+  <script src="/src/scripts/pages/payment/pre.js" defer></script>
+  <title>Rexan hotel plans</title>
+ </head>
+ <body
+  data-page-loader
+  data-referesh-loader
+  data-page-loader-active="true"
+  data-referesh-loader-active="{{pageRefreshLoaderStatus}}"
+  dir="rtl"
+  ng-app="wrapperModule"
+  ng-controller="wrapperController"
+ >
+  <div
+   ng-controller="prePaymentController"
+   class="master__conatiner"
+   id="master__container"
+  >
+   <master-header from='"rooms"'></master-header>
+   <div class="master__content">
+    <main data-master-main class="master__main rooms-main">
+     @*routing section*@
+     <div class="ms-page-intro">
+      <h1 class="ms-page-intro__title">ثبت و تایید سفارش</h1>
+     </div>
+     <div class="prep__content">
+      <article class="prep-bill__container">
+       <div class="comp-sp-tb__container">
+        <div class="comp-sp-tb__res prep-tb__res">
+         <table class="comp-sp-tb prep-tb">
+          <thead>
+           <tr>
+            <th>
+             <div class="inner-cell">نام اتاق</div>
+            </th>
+            <th>
+             <div class="inner-cell">شماره اتاق</div>
+            </th>
+            <th>
+             <div class="inner-cell">
+              متراژ اتاق
+              <br />
+              (مترمربع)
+             </div>
+            </th>
+            <th>
+             <div class="inner-cell">حداکثر ظرفیت</div>
+            </th>
+            <th>
+             <div class="inner-cell">طبقه</div>
+            </th>
+            <th>
+             <div class="inner-cell">چشم انداز</div>
+            </th>
+            <th>
+             <div class="inner-cell">شماره دوره</div>
+            </th>
+            <th>
+             <div class="inner-cell">تاریخ شروع دوره</div>
+            </th>
+            <th>
+             <div class="inner-cell">تاریخ پایان دوره</div>
+            </th>
+            <th>
+             <div class="inner-cell">
+              قیمت
+              <br />
+              (تومان)
+             </div>
+            </th>
+            <th>
+             <div class="inner-cell"></div>
+            </th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <td>
+             <div class="inner-cell">دو تخته دبل</div>
+            </td>
+            <td>
+             <div class="inner-cell">15</div>
+            </td>
+            <td>
+             <div class="inner-cell">36</div>
+            </td>
+            <td>
+             <div class="inner-cell">4</div>
+            </td>
+            <td>
+             <div class="inner-cell">5</div>
+            </td>
+            <td>
+             <div class="inner-cell">دید حرم</div>
+            </td>
+            <td>
+             <div class="inner-cell">16</div>
+            </td>
+            <td>
+             <div class="inner-cell">5 ربیع&zwnjالثانی</div>
+            </td>
+            <td>
+             <div class="inner-cell">5 ربیع&zwnjالثانی</div>
+            </td>
+            <td>
+             <div class="inner-cell">200.000.000</div>
+            </td>
+            <td>
+             <div class="inner-cell">
+              <button type="button" aria-label="delete row" class="util-ln-0">
+               <i class="util-txt-red util-fn-1-8 opt-trash-can"></i>
+              </button>
+             </div>
+            </td>
+           </tr>
+          </tbody>
+          <tfoot class="prep-tb__footer">
+           <tr>
+            <td colspan="9">
+             <div class="inner-cell">مجموع</div>
+            </td>
+            <td>
+             <div class="inner-cell">1.000.000.000</div>
+            </td>
+            <td></td>
+           </tr>
+           <tr>
+            <td colspan="9">
+             <div class="inner-cell">%9 مالیات ارزش افزوده</div>
+            </td>
+            <td>
+             <div class="inner-cell">90.000.000</div>
+            </td>
+            <td></td>
+           </tr>
+           <tr class="prep-sum__row">
+            <td colspan="9">
+             <div class="inner-cell">مبلغ کل</div>
+            </td>
+            <td>
+             <div class="inner-cell">1/090/000/000</div>
+            </td>
+            <td></td>
+           </tr>
+          </tfoot>
+         </table>
+        </div>
+       </div>
+       <ul class="prep-condition__list">
+        <li class="prep-condition__item">
+         <span>30 درصد از مبلغ کل قرارداد زمان انعقاد قرارداد</span>
+         <span>327/000/000 (تومان)</span>
+        </li>
+        <li class="prep-condition__item">
+         <span>30 درصد از مبلغ کل قرارداد زمان انعقاد قرارداد</span>
+         <span>327/000/000 (تومان)</span>
+        </li>
+       </ul>
+      </article>
+      <aside class="prep__completion">
+       <form class="comp-form prep__completion-form">
+        <header class="comp-form__header">
+         <p class="comp-form__title">جناب آقا / خانم ...</p>
+        </header>
+        <div class="comp-form__main">
+         <div class="prep-confirm__container">
+          <p class="prep-confirm__msg util-txt-red">
+           مبلغ قابل پرداخت 3/270/000/000 ریال
+          </p>
+          <comp-link
+           data-text="'پرداخت صورتحساب'"
+           class-name="'prep-confirm__btn confirm'"
+           navigate-to="'#'"
+          ></comp-link>
+         </div>
+        </div>
+       </form>
+      </aside>
+     </div>
+     <master-footer></master-footer>
+    </main>
+   </div>
+  </div>
+ </body>
+</html>
