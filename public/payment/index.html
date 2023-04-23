@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fa">
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- * google index -->
+  <meta name="robots" content="noindex" />
+  <!-- * styles -->
+  <link rel="stylesheet" href="/src/styles/global/reset.css" />
+  <link rel="stylesheet" href="/src/assets/icons/style.css" />
+  <link rel="stylesheet" href="/src/styles/components/component.css" />
+  <link rel="stylesheet" href="/src/styles/global/layout.css" />
+  <!-- * page style -->
+  <link rel="stylesheet" href="/src/styles/pages/payment/index.css" />
+  <!-- * libraries -->
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <!-- * modules -->
+  <script src="/src/scripts/modules/tools-md.js" defer></script>
+  <script src="/src/scripts/modules/components-md.js" defer></script>
+  <script src="/src/scripts/modules/layout-md.js" defer></script>
+  <script src="/src/scripts/modules/wrapper-md.js" defer></script>
+  <!-- * page script -->
+  <script src="/src/scripts/pages/payment/index.js" defer></script>
+  <title>Rexan hotel plans</title>
+ </head>
+ <body
+  data-page-loader
+  data-referesh-loader
+  data-page-loader-active="true"
+  data-referesh-loader-active="{{pageRefreshLoaderStatus}}"
+  dir="rtl"
+  ng-app="wrapperModule"
+  ng-controller="wrapperController"
+ >
+  <div
+   ng-controller="paymentController"
+   class="master__conatiner"
+   id="master__container"
+  >
+   <master-header from='"rooms"'></master-header>
+   <div class="master__content">
+    <main data-master-main class="master__main">
+     <div class="ms-page-intro">
+      <h1 class="ms-page-intro__title">نهایی کردن سفارش و پرداخت آنلاین</h1>
+     </div>
+     <article class="payment__content">
+      <div class="payment-info">
+       <ul class="payment-info__list top">
+        <li>
+         <span>کدمشتری:‌ </span>
+         <span>565421668</span>
+        </li>
+        <li>
+         <span>نام و نام خانوادگی:‌ </span>
+         <span>اصغر فرهادی</span>
+        </li>
+        <li>
+         <span>تلفن همراه:‌ </span>
+         <span>0912222222</span>
+        </li>
+        <li>
+         <span>پست الکترونیکی:‌ </span>
+         <span>hamidwise1@gmial.com</span>
+        </li>
+        <li>
+         <span>واحد پول پرداختی:‌ </span>
+         <span>ریال</span>
+        </li>
+       </ul>
+       <ul class="payment-info__list">
+        <li>
+         <span>آدرس:‌ </span>
+         <span>میدان هفتم تیر</span>
+        </li>
+       </ul>
+      </div>
+      <div class="comp-sp-tb__container payment__tb-container">
+       <div class="comp-sp-tb__res">
+        <table class="comp-sp-tb payment__tb">
+         <thead>
+          <tr>
+           <th>
+            <div class="inner-cell">نام کالا یا خدمت</div>
+           </th>
+           <th>
+            <div class="inner-cell">تعداد اتاق</div>
+           </th>
+           <th>
+            <div class="inner-cell">قیمت واحد (تومان)</div>
+           </th>
+           <th>
+            <div class="inner-cell">قیمت (تومان)</div>
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+           <td>
+            <div class="inner-cell">دوره 16</div>
+           </td>
+           <td>
+            <div class="inner-cell">1</div>
+           </td>
+           <td>
+            <div class="inner-cell">200.000.000</div>
+           </td>
+           <td>
+            <div class="inner-cell">200.000.000</div>
+           </td>
+          </tr>
+         </tbody>
+         <tfoot>
+          <tr>
+           <th colspan="3"><div class="inner-cell">جمع اقلام</div></th>
+           <th><div class="inner-cell">0</div></th>
+          </tr>
+          <tr>
+           <th colspan="3"><div class="inner-cell">جمع سرویس</div></th>
+           <th><div class="inner-cell">0</div></th>
+          </tr>
+          <tr>
+           <th colspan="3"><div class="inner-cell">جمع تخفیف</div></th>
+           <th><div class="inner-cell">0</div></th>
+          </tr>
+          <tr>
+           <th colspan="3"><div class="inner-cell">جمع مالیات</div></th>
+           <th><div class="inner-cell">0</div></th>
+          </tr>
+          <tr>
+           <th colspan="3"><div class="inner-cell">مبلغ کل</div></th>
+           <th><div class="inner-cell">0</div></th>
+          </tr>
+          <tr class="payment__tb-sum">
+           <th colspan="3">
+            <div class="inner-cell">
+             <span> قابل پرداخت</span>
+             <span class="util-txt-red">
+              (30٪‌از مبلغ کل قرداد زمان انعقاد قرارداد)
+             </span>
+            </div>
+           </th>
+           <th><div class="inner-cell">337.000.000</div></th>
+          </tr>
+         </tfoot>
+        </table>
+       </div>
+      </div>
+      <form class="payment__submit">
+       <ul class="payment__portals-list">
+        <li class="payment__portals-item" tabindex="0">
+         <i class="opt-checkmark"></i>
+         <img class="payment__portals-img" src="" alt="portal logo" />
+        </li>
+       </ul>
+       <div class="payment__submit-confirmation">
+        <span ng-if="false" class="payment__submit-msg"
+         >درگاه بانک جهت پرداخت انتخاب کنید</span
+        >
+        <comp-link
+         class="payment__submit-confirm"
+         data-text="'پرداخت صورتحساب'"
+         class-name="'confirm'"
+         navigate-to="'#'"
+        ></comp-link>
+       </div>
+      </form>
+     </article>
+     <master-footer></master-footer>
+    </main>
+   </div>
+  </div>
+ </body>
+</html>

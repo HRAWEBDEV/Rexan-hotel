@@ -570,4 +570,28 @@
   };
   componentModule.directive('compImgSlider', sliderDdo);
  })();
+ (function imageSlideShow() {
+  const slideShowDdo = () => {
+   const componentLink = (scope, jqContainer) => {};
+   const createTemplate = () => {
+    return `
+    <div class="comp-slide-show__container">
+      <button type='button' class="comp-slide-show__close">
+        <i class='opt-menu-times util-hover-cl--gold'></i>
+      </button>
+    </div>
+    `;
+   };
+   return {
+    restrict: 'E',
+    link: componentLink,
+    template: createTemplate(),
+    scope: {
+     isOpen: '=',
+     images: '<?',
+    },
+   };
+  };
+  componentModule.directive('compImgSlideShow', slideShowDdo);
+ })();
 })();

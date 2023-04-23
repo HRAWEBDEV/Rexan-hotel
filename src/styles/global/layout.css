@@ -350,7 +350,7 @@ body {
 
 [data-page-loader][data-page-loader-active='true']::after,
 [data-referesh-loader][data-referesh-loader-active='true']::after {
- content: url('/TS/wwwroot/assets/svg/Rexan_Hotel_Logo_no_title.svg');
+ content: url('/src/assets/svg/Rexan_Hotel_Logo_no_title.svg');
  left: 50%;
  top: 50%;
  transform: translate(-50%, -50%);
@@ -365,9 +365,6 @@ body {
 
 [data-referesh-loader][data-referesh-loader-active='true']::before {
  background-color: rgb(var(--cl-white), 0.8);
-}
-
-[data-page-loader][data-page-loader-active='true']::after {
 }
 
 [data-page-loader][data-page-loader-active='true']::before {
