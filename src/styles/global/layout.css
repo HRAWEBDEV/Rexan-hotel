@@ -677,7 +677,25 @@ body {
  width: 0.5em;
  background-color: var(--cl-red-accent);
 }
+.comp-filters__controller {
+ display: none;
+ flex-wrap: wrap;
+ gap: var(--gap);
+ justify-content: flex-end;
+ padding: var(--gap);
+ padding-bottom: 0;
+}
 
+.comp-filters__close {
+ line-height: 0;
+ transition: var(--tr-all-normall);
+}
+.comp-filters__close:is(:hover, :focus) {
+ color: var(--cl-red-accent);
+}
+.comp-filters__close i {
+ font-size: 1.8em;
+}
 .comp-filter__list {
  display: none;
  margin-top: var(--gap);
@@ -685,7 +703,15 @@ body {
  overflow: auto;
  padding-inline-start: var(--gap);
 }
+@media (min-width: 65.1em) {
+ .comp-filters__display {
+  display: none !important;
+ }
+}
 @media (max-width: 65em) {
+ .comp-filters__controller {
+  display: flex;
+ }
  .comp-filters__container {
   position: absolute;
   z-index: var(--zi-filters);

@@ -25,19 +25,23 @@
   };
   const toggleFiltersVisible = (action) => {
    if (action == 'hide') {
-    jqRoomFilterContainer.removeClass('is-visble');
+    jqRoomFilterContainer.removeClass('is-visible');
     return;
    }
-   jqRoomFilterContainer.addClass('is-visble');
+   jqRoomFilterContainer.addClass('is-visible');
   };
   const hideFiltersClicked = () => {
    toggleFiltersVisible('hide');
   };
   const showFiltersClicked = () => {
-   toggleFiltersVisible('hide');
+   toggleFiltersVisible();
   };
-  jqRoomFilterForm.on('click', '[data-comp-filter-hide]', hideFiltersClicked);
-  jqRoomFilterForm.on('click', '[data-comp-filter-btn]', onFilterBtnClick);
+  jqRoomFilterContainer.on(
+   'click',
+   '[data-comp-filter-hide]',
+   hideFiltersClicked
+  );
+  jqRoomFilterContainer.on('click', '[data-comp-filter-btn]', onFilterBtnClick);
   return {
    show: showFiltersClicked,
    hide: hideFiltersClicked,

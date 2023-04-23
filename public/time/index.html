@@ -51,6 +51,11 @@
        data-comp-filter-container
        class="comp-filters__container plans-filters__container"
       >
+       <div class="comp-filters__controller">
+        <button data-comp-filter-hide class="comp-filters__close">
+         <i class="opt-right-hold"></i>
+        </button>
+       </div>
        <div class="comp-filters__stick">
         <form data-comp-filter-form class="rooms-filter__form">
          <div class="comp-filter__type">
@@ -113,6 +118,12 @@
        </div>
       </aside>
       <section id="plans__section" class="plans__section">
+       <div class="plans__filters comp-filters__display">
+        <button class="plans__filters-btn" ng-click="showFiltersClicked()">
+         <i class="opt-limit"></i>
+         <span>فیلترها</span>
+        </button>
+       </div>
        <article class="plans__view">
         <div class="plan__card-wrapper" ng-repeat="time in times">
          <div class="plan__card">

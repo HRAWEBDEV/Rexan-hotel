@@ -2,7 +2,24 @@
  position: relative;
  display: flex;
 }
-
+.plans__filters {
+ display: flex;
+ flex-wrap: wrap;
+ gap: var(--gap-2x);
+ margin-bottom: var(--gap-2x);
+}
+.plans__filters-btn {
+ display: flex;
+ align-items: center;
+ gap: 0.5em;
+ transition: var(--tr-all-normall);
+}
+.plans__filters-btn:is(:hover, :focus) {
+ color: var(--cl-red-accent);
+}
+.plans__filters-btn i {
+ font-size: 1.8em;
+}
 .plans__section {
  flex: 1;
  padding: var(--gap-2x);
